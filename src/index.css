@@ -6,11 +6,11 @@
 
 @layer base {
   :root {
-    --background: 45 22% 95%;
+    --background: 43 26% 95%;
     --foreground: 120 7% 10%;
-    --card: 45 25% 98%;
+    --card: 43 26% 95%;
     --card-foreground: 120 7% 10%;
-    --popover: 45 25% 98%;
+    --popover: 43 26% 95%;
     --popover-foreground: 120 7% 10%;
     --primary: 148 45% 23%;
     --primary-foreground: 45 30% 97%;
@@ -39,7 +39,7 @@
   body {
     @apply bg-background text-foreground font-body antialiased;
     min-width: 320px;
-    background-color: #f4f2ec;
+    background-color: #f5f3ee;
   }
 
   ::selection {
@@ -61,7 +61,7 @@
   }
 
   .glass {
-    background: rgba(255, 255, 255, 0.62);
+    background: rgba(245, 243, 238, 0.72);
     border: 1px solid rgba(24, 27, 24, 0.1);
     backdrop-filter: blur(16px);
   }

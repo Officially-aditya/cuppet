@@ -39,7 +39,7 @@ function ContactRow({
         <div className="mt-0.5 flex items-center justify-between gap-2">
           <p className="truncate text-[11px] text-black/45">{preview}</p>
           {unread && (
-            <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#24583b] text-[9px] font-bold text-white">
+            <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#24583b] text-[9px] font-bold text-[#F5F3EE]">
               {unread}
             </span>
           )}
@@ -55,7 +55,7 @@ function ContactRow({
 
 function SourceChip({ Icon, label }: { Icon: typeof Mail; label: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white/50 px-2.5 py-1 text-[9.5px] font-medium text-black/55">
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-[#F5F3EE]/60 px-2.5 py-1 text-[9.5px] font-medium text-black/55">
       <Icon className="h-3 w-3 text-[#2c6042]" />
       {label}
     </span>
@@ -95,7 +95,7 @@ export default function Features() {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-[1.5rem] border border-black/10 bg-[#f8f7f2] shadow-[0_24px_60px_-48px_rgba(15,28,19,0.5)]">
+          <div className="overflow-hidden rounded-[1.5rem] border border-black/10 bg-[#F5F3EE] shadow-[0_24px_60px_-48px_rgba(15,28,19,0.5)]">
             <div className="flex items-center justify-between border-b border-black/[0.07] px-5 py-4">
               <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-black/40">
                 Agent inbox
@@ -134,7 +134,7 @@ export default function Features() {
           {...reveal}
           className="mt-20 grid items-center gap-10 border-t border-black/10 pt-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20"
         >
-          <div className="order-2 rounded-[1.5rem] border border-black/10 bg-[#f8f7f2] p-5 shadow-[0_24px_60px_-48px_rgba(15,28,19,0.5)] sm:p-7 lg:order-1">
+          <div className="order-2 rounded-[1.5rem] border border-black/10 bg-[#F5F3EE] p-5 shadow-[0_24px_60px_-48px_rgba(15,28,19,0.5)] sm:p-7 lg:order-1">
             <div className="mb-8 flex items-center justify-between">
               <div>
                 <p className="text-[13px] font-semibold text-[#171a17]">Cuppet Assistant</p>
@@ -144,7 +144,7 @@ export default function Features() {
                 Read only
               </span>
             </div>
-            <div className="ml-auto max-w-[75%] rounded-2xl rounded-br-sm bg-[#173c2a] px-4 py-3 text-[12px] leading-5 text-white">
+            <div className="ml-auto max-w-[75%] rounded-2xl rounded-br-sm bg-[#173c2a] px-4 py-3 text-[12px] leading-5 text-[#F5F3EE]">
               What needs my attention before I log off?
             </div>
             <div className="mt-3 max-w-[88%] rounded-2xl rounded-bl-sm bg-[#e9e8e2] px-4 py-3">

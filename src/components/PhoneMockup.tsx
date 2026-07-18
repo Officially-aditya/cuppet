@@ -60,14 +60,14 @@ function DigestCard() {
     { tag: 'Dev', title: 'Agent frameworks become the default app backend' },
   ]
   return (
-    <div className="mt-1 rounded-xl overflow-hidden border border-white/10 bg-white/[0.04]">
-      <div className="px-3 py-2 flex items-center gap-2 border-b border-white/10 bg-brand-400/10">
+    <div className="mt-1 rounded-xl overflow-hidden border border-[#F5F3EE]/10 bg-[#F5F3EE]/5">
+      <div className="px-3 py-2 flex items-center gap-2 border-b border-[#F5F3EE]/10 bg-brand-400/10">
         <Newspaper className="w-3.5 h-3.5 text-brand-300" />
         <span className="text-[11px] font-semibold text-brand-200 tracking-wide uppercase">
           Tech Digest · 3 stories
         </span>
       </div>
-      <div className="divide-y divide-white/5">
+      <div className="divide-y divide-[#F5F3EE]/5">
         {items.map((it) => (
           <div key={it.title} className="px-3 py-2">
             <span className="text-[9px] font-bold text-brand-300 uppercase tracking-widest">{it.tag}</span>
@@ -102,13 +102,13 @@ export default function PhoneMockup() {
   return (
     <div className="relative w-full max-w-[320px] sm:max-w-[350px] select-none">
       {/* Phone frame */}
-      <div className="relative rounded-[3rem] border border-white/15 bg-zinc-950 p-2.5 glow-ring">
+      <div className="relative rounded-[3rem] border border-[#F5F3EE]/15 bg-zinc-950 p-2.5 glow-ring">
         <div className="relative rounded-[2.4rem] overflow-hidden bg-[#0b141a] h-[620px] flex flex-col">
           {/* Notch */}
           <div className="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-20" />
 
           {/* Chat header */}
-          <div className="pt-9 pb-2.5 px-3 flex items-center gap-2.5 bg-[#101a20] border-b border-white/5 z-10">
+          <div className="pt-9 pb-2.5 px-3 flex items-center gap-2.5 bg-[#101a20] border-b border-[#F5F3EE]/5 z-10">
             <ChevronLeft className="w-5 h-5 text-zinc-400 -ml-1" />
             <div className="relative">
               <div className="w-9 h-9 rounded-full bg-gradient-to-br from-brand-300 to-brand-600 flex items-center justify-center">
@@ -151,7 +151,7 @@ export default function PhoneMockup() {
                   }
                 >
                   {m.kind === 'date' && (
-                    <span className="text-[10px] font-medium text-zinc-400 bg-[#182229] px-3 py-1 rounded-full border border-white/5">
+                    <span className="text-[10px] font-medium text-zinc-400 bg-[#182229] px-3 py-1 rounded-full border border-[#F5F3EE]/5">
                       {m.text}
                     </span>
                   )}

@@ -10,7 +10,7 @@ import Footer from '../sections/Footer'
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-clip">
+    <div className="min-h-screen bg-[#F5F3EE] text-foreground overflow-x-clip">
       <Navbar />
       <main>
         <Hero />

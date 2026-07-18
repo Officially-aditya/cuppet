@@ -57,7 +57,7 @@ export default function Hero() {
           >
             <a
               href="#cta"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#173c2a] hover:bg-[#102e20] text-[#f8f5ee] text-sm font-semibold px-6 py-3.5 rounded-full transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#173c2a] hover:bg-[#102e20] text-[#F5F3EE] text-sm font-semibold px-6 py-3.5 rounded-full transition-all"
             >
               Join private beta
               <ArrowRight className="w-4 h-4" />

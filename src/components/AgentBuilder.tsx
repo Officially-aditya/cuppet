@@ -139,11 +139,11 @@ export default function AgentBuilder() {
   return (
     <div className="rounded-[1.75rem] border border-black/10 bg-[#171a17] p-5 sm:p-8 max-w-3xl mx-auto shadow-[0_30px_80px_-50px_rgba(10,25,16,0.7)]">
       <div className="mb-7 flex items-center justify-between">
-        <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">
+        <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#F5F3EE]/50">
           <Wand2 className="w-3.5 h-3.5 text-[#9ac3a3]" />
           Build an agent
         </div>
-        <span className="flex items-center gap-1.5 text-[10px] font-medium text-white/35">
+        <span className="flex items-center gap-1.5 text-[10px] font-medium text-[#F5F3EE]/35">
           <span className="h-1.5 w-1.5 rounded-full bg-[#78b88a]" />
           Live preview
         </span>
@@ -156,12 +156,12 @@ export default function AgentBuilder() {
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && create(value)}
           placeholder="e.g. Summarize my emails every evening at 6pm"
-          className="flex-1 bg-white/[0.055] border border-white/10 focus:border-white/30 focus:ring-2 focus:ring-white/5 outline-none rounded-xl px-5 py-3.5 text-sm text-white placeholder:text-white/30 transition-all"
+          className="flex-1 bg-[#F5F3EE]/5 border border-[#F5F3EE]/10 focus:border-[#F5F3EE]/30 focus:ring-2 focus:ring-[#F5F3EE]/5 outline-none rounded-xl px-5 py-3.5 text-sm text-[#F5F3EE] placeholder:text-[#F5F3EE]/30 transition-all"
         />
         <button
           onClick={() => create(value)}
           disabled={building || !value.trim()}
-          className="inline-flex items-center justify-center gap-2 bg-[#edf1e9] hover:bg-white disabled:opacity-40 disabled:cursor-not-allowed text-[#173c2a] font-semibold text-sm px-6 py-3.5 rounded-xl transition-all"
+          className="inline-flex items-center justify-center gap-2 bg-[#F5F3EE] hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed text-[#173c2a] font-semibold text-sm px-6 py-3.5 rounded-xl transition-all"
         >
           <Sparkles className="w-4 h-4" />
           {building ? 'Creating…' : 'Create agent'}
@@ -174,7 +174,7 @@ export default function AgentBuilder() {
           <button
             key={p}
             onClick={() => create(p)}
-            className="text-[11px] text-white/45 hover:text-white/80 bg-white/[0.025] border border-white/10 hover:border-white/20 rounded-full px-3.5 py-1.5 transition-all"
+            className="text-[11px] text-[#F5F3EE]/45 hover:text-[#F5F3EE]/80 bg-[#F5F3EE]/[0.025] border border-[#F5F3EE]/10 hover:border-[#F5F3EE]/20 rounded-full px-3.5 py-1.5 transition-all"
           >
             {p}
           </button>
@@ -190,7 +190,7 @@ export default function AgentBuilder() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="flex items-center gap-3 text-sm text-white/45 py-10 justify-center"
+              className="flex items-center gap-3 text-sm text-[#F5F3EE]/45 py-10 justify-center"
             >
               <div className="flex gap-1.5">
                 {[0, 1, 2].map((d) => (
@@ -211,7 +211,7 @@ export default function AgentBuilder() {
               initial={{ opacity: 0, y: 16, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ type: 'spring', stiffness: 260, damping: 24 }}
-              className="rounded-2xl border border-white/10 bg-white/[0.055] p-5"
+              className="rounded-2xl border border-[#F5F3EE]/10 bg-[#F5F3EE]/5 p-5"
             >
               <div className="flex items-start gap-4">
                 <div className="relative shrink-0">
@@ -222,19 +222,19 @@ export default function AgentBuilder() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <p className="font-semibold text-white text-sm">{agent.name}</p>
-                    <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[#b7d3bd] bg-white/[0.06] rounded-full px-2 py-0.5">
+                    <p className="font-semibold text-[#F5F3EE] text-sm">{agent.name}</p>
+                    <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[#b7d3bd] bg-[#F5F3EE]/5 rounded-full px-2 py-0.5">
                       <Check className="w-3 h-3" />
                       Added to your chats
                     </span>
                   </div>
-                  <p className="text-xs text-white/45 mt-1 line-clamp-2">“{agent.task}”</p>
+                  <p className="text-xs text-[#F5F3EE]/45 mt-1 line-clamp-2">“{agent.task}”</p>
                   <div className="flex flex-wrap items-center gap-2 mt-3">
-                    <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#c5dec9] bg-white/[0.04] border border-white/10 rounded-full px-3 py-1">
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#c5dec9] bg-[#F5F3EE]/5 border border-[#F5F3EE]/10 rounded-full px-3 py-1">
                       <CalendarClock className="w-3.5 h-3.5" />
                       {agent.schedule}
                     </span>
-                    <code className="text-[10.5px] font-mono text-white/30 bg-black/20 border border-white/10 rounded-full px-3 py-1">
+                    <code className="text-[10.5px] font-mono text-[#F5F3EE]/30 bg-black/20 border border-[#F5F3EE]/10 rounded-full px-3 py-1">
                       cron · {agent.cron}
                     </code>
                   </div>
@@ -248,7 +248,7 @@ export default function AgentBuilder() {
               key="empty"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center text-xs text-white/25 py-10"
+              className="text-center text-xs text-[#F5F3EE]/25 py-10"
             >
               Your new agent will appear here as a contact — ready to message you on schedule.
             </motion.p>

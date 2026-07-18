@@ -24,10 +24,10 @@ export default function SectionHeading({
       className={`max-w-3xl ${align === 'center' ? 'mx-auto text-center' : ''}`}
     >
       <div className={`flex items-center gap-3 ${align === 'center' ? 'justify-center' : ''}`}>
-        <span className={`h-px w-8 ${isDark ? 'bg-white/30' : 'bg-black/25'}`} />
+        <span className={`h-px w-8 ${isDark ? 'bg-[#F5F3EE]/30' : 'bg-black/25'}`} />
         <span
           className={`text-[10px] font-semibold uppercase tracking-[0.2em] ${
-            isDark ? 'text-white/60' : 'text-black/50'
+            isDark ? 'text-[#F5F3EE]/60' : 'text-black/50'
           }`}
         >
           {eyebrow}
@@ -35,7 +35,7 @@ export default function SectionHeading({
       </div>
       <h2
         className={`mt-6 font-display font-normal tracking-[-0.025em] text-[2.5rem] leading-[0.98] sm:text-[3.55rem] ${
-          isDark ? 'text-[#f7f4ed]' : 'text-[#171a17]'
+          isDark ? 'text-[#F5F3EE]' : 'text-[#171a17]'
         }`}
       >
         {title}
@@ -44,7 +44,7 @@ export default function SectionHeading({
         <p
           className={`mt-5 max-w-2xl text-[15px] leading-7 ${
             align === 'center' ? 'mx-auto' : ''
-          } ${isDark ? 'text-white/60' : 'text-black/55'}`}
+          } ${isDark ? 'text-[#F5F3EE]/60' : 'text-black/55'}`}
         >
           {sub}
         </p>

@@ -55,7 +55,7 @@ export default function Examples() {
               className="group grid gap-5 border-b border-black/10 py-7 last:border-b-0 sm:grid-cols-[180px_minmax(0,1fr)_170px] sm:items-center sm:gap-8"
             >
               <div className="flex items-center gap-3">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-white/45">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-[#F5F3EE]/55">
                   <example.Icon className="h-4 w-4 text-[#2c6042]" strokeWidth={1.6} />
                 </span>
                 <div>
