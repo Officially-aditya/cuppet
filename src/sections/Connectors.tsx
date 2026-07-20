@@ -41,7 +41,7 @@ type Connector = {
   description: string
 }
 
-const CONNECTORS: Connector[] = [
+const CONNECTOR_CATALOG: Connector[] = [
   {
     name: 'Gmail',
     color: '#ea4335',
@@ -225,6 +225,21 @@ const CONNECTORS: Connector[] = [
     description: 'Handle routine outreach and updates without starting from scratch each day.',
   },
 ]
+
+const ENABLED_CONNECTOR_NAMES = [
+  'Gmail',
+  'Google Calendar',
+  'Google Drive',
+  'GitHub',
+  'Slack',
+  'Notion',
+] as const
+
+const CONNECTORS = ENABLED_CONNECTOR_NAMES.map((name) => {
+  const connector = CONNECTOR_CATALOG.find((candidate) => candidate.name === name)
+  if (!connector) throw new Error(`Missing connector: ${name}`)
+  return connector
+})
 
 const CONNECTOR_LOGOS = CONNECTORS.map(({ Icon, name, color }) => ({
   node: (
