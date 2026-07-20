@@ -1,3 +1,5 @@
+'use client'
+
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 
 const SMOOTH_TAU = 0.25

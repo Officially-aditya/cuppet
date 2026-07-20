@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { ArrowRight, Check } from 'lucide-react'
 
@@ -28,7 +30,7 @@ export default function CTA() {
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#92bf9d]">
               <Check className="h-3 w-3 text-[var(--forest)]" strokeWidth={3} />
             </span>
-            You're on the list — we'll message you. Naturally.
+            {"You're on the list — we'll message you. Naturally."}
           </div>
         ) : (
           <div className="mx-auto mt-9 flex max-w-md flex-col gap-2 rounded-full border border-[rgba(245,243,238,0.15)] bg-[rgba(245,243,238,0.05)] p-1.5 sm:flex-row">

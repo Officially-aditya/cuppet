@@ -1,6 +1,11 @@
+'use client'
+
+/* eslint-disable @next/next/no-img-element */
+
 import { useEffect, useState } from 'react'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
-import { Link, NavLink } from 'react-router'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const LINKS = [
   { label: 'Product', href: '/', end: true },
@@ -17,7 +22,7 @@ export function Logo({
 }) {
   return (
     <Link
-      to="/"
+      href="/"
       onClick={onNavigate}
       className="group flex items-center gap-2.5"
       aria-label="Cuppet home"
@@ -39,8 +44,12 @@ export function Logo({
 }
 
 export default function Navbar() {
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+
+  const isActive = (href: string, end: boolean) =>
+    end ? pathname === href : pathname === href || pathname.startsWith(`${href}/`)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16)
@@ -70,26 +79,23 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-1">
           {LINKS.map((l) => (
-            <NavLink
+            <Link
               key={l.href}
-              to={l.href}
-              end={l.end}
-              className={({ isActive }) =>
-                `rounded-full px-3.5 py-2 text-[13px] font-medium transition-colors duration-200 ${
-                  isActive
+              href={l.href}
+              className={`rounded-full px-3.5 py-2 text-[13px] font-medium transition-colors duration-200 ${
+                  isActive(l.href, l.end)
                     ? 'bg-[var(--paper-3)] text-[var(--forest)]'
                     : 'text-[var(--ink-soft)] hover:bg-black/[0.04] hover:text-[var(--ink)]'
-                }`
-              }
+                }`}
             >
               {l.label}
-            </NavLink>
+            </Link>
           ))}
         </div>
 
         <div className="flex items-center gap-2">
           <Link
-            to="/#cta"
+            href="/#cta"
             className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-[var(--forest)] px-4 py-2 text-[13px] font-semibold text-[var(--paper)] transition-colors duration-200 hover:bg-[#102e20]"
           >
             Join private beta
@@ -113,24 +119,21 @@ export default function Navbar() {
           className="mx-auto mt-2 max-w-5xl overflow-hidden rounded-2xl border border-[var(--rule)] bg-[rgba(245,243,238,0.96)] px-3 py-3 shadow-[0_16px_48px_-28px_rgba(12,25,17,0.4)] backdrop-blur-xl md:hidden"
         >
           {LINKS.map((l) => (
-            <NavLink
+            <Link
               key={l.href}
-              to={l.href}
-              end={l.end}
+              href={l.href}
               onClick={() => setOpen(false)}
-              className={({ isActive }) =>
-                `block rounded-xl px-3 py-3 text-sm transition-colors ${
-                  isActive
+              className={`block rounded-xl px-3 py-3 text-sm transition-colors ${
+                  isActive(l.href, l.end)
                     ? 'bg-[var(--paper-3)] font-semibold text-[var(--forest)]'
                     : 'text-[var(--ink-soft)] hover:bg-black/[0.03] hover:text-[var(--ink)]'
-                }`
-              }
+                }`}
             >
               {l.label}
-            </NavLink>
+            </Link>
           ))}
           <Link
-            to="/#cta"
+            href="/#cta"
             onClick={() => setOpen(false)}
             className="mt-2 flex items-center justify-center gap-2 rounded-full bg-[var(--forest)] px-4 py-2.5 text-sm font-semibold text-[var(--paper)]"
           >

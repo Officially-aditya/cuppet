@@ -1,55 +1,24 @@
 import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { Link, useParams } from 'react-router'
+import Link from 'next/link'
 import EditorialVisual from '../components/EditorialVisual'
-import Seo from '../components/Seo'
 import SiteLayout from '../components/SiteLayout'
 import { blogPosts, getBlogPost } from '../data/blog'
-import NotFound from './NotFound'
 
-export default function BlogPost() {
-  const { slug = '' } = useParams()
+export default function BlogPost({ slug }: { slug: string }) {
   const post = getBlogPost(slug)
 
-  if (!post) return <NotFound />
+  if (!post) return null
 
   const currentIndex = blogPosts.findIndex((item) => item.slug === post.slug)
   const nextPost = blogPosts[(currentIndex + 1) % blogPosts.length]
-  const canonicalPath = `/blog/${post.slug}`
-
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.excerpt,
-    datePublished: post.published,
-    dateModified: post.published,
-    author: {
-      '@type': 'Organization',
-      name: 'Cuppet team',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Cuppet',
-    },
-    mainEntityOfPage: `https://cuppet-app.shatslabs.chatgpt.site${canonicalPath}`,
-  }
-
   return (
     <SiteLayout>
-      <Seo
-        title={post.title}
-        description={post.excerpt}
-        path={canonicalPath}
-        type="article"
-        published={post.published}
-        jsonLd={jsonLd}
-      />
       <main>
         <article>
           <header className="px-5 pb-14 pt-32 sm:px-8 sm:pb-16 sm:pt-40">
             <div className="mx-auto max-w-3xl">
               <Link
-                to="/blog"
+                href="/blog"
                 className="group inline-flex items-center gap-2 text-[13px] font-medium text-[var(--ink-faint)] transition-colors duration-200 hover:text-[var(--ink)]"
               >
                 <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-1" />
@@ -118,7 +87,7 @@ export default function BlogPost() {
               </p>
               <h2 className="mt-4 max-w-xl font-display text-[2.4rem] font-normal leading-[0.98] tracking-[-0.03em] text-[var(--ink)] sm:text-[3.1rem]">
                 <Link
-                  to={`/blog/${nextPost.slug}`}
+                  href={`/blog/${nextPost.slug}`}
                   className="transition-colors duration-200 hover:text-[var(--forest-mid)]"
                 >
                   {nextPost.title}
@@ -128,7 +97,7 @@ export default function BlogPost() {
                 {nextPost.excerpt}
               </p>
               <Link
-                to={`/blog/${nextPost.slug}`}
+                href={`/blog/${nextPost.slug}`}
                 className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[var(--forest)] transition-colors duration-200 hover:text-[var(--forest-mid)]"
               >
                 Continue reading

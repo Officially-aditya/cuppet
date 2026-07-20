@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import Link from 'next/link'
 import { Logo } from './Navbar'
 
 export default function Footer() {
@@ -12,19 +12,19 @@ export default function Footer() {
           </p>
         </div>
         <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[12px] text-[var(--ink-faint)]">
-          <Link to="/" className="transition-colors duration-200 hover:text-[var(--ink)]">
+          <Link href="/" className="transition-colors duration-200 hover:text-[var(--ink)]">
             Product
           </Link>
-          <Link to="/about" className="transition-colors duration-200 hover:text-[var(--ink)]">
+          <Link href="/about" className="transition-colors duration-200 hover:text-[var(--ink)]">
             About Us
           </Link>
-          <Link to="/blog" className="transition-colors duration-200 hover:text-[var(--ink)]">
+          <Link href="/blog" className="transition-colors duration-200 hover:text-[var(--ink)]">
             Blog
           </Link>
-          <Link to="/privacy" className="transition-colors duration-200 hover:text-[var(--ink)]">
+          <Link href="/privacy" className="transition-colors duration-200 hover:text-[var(--ink)]">
             Privacy
           </Link>
-          <Link to="/terms" className="transition-colors duration-200 hover:text-[var(--ink)]">
+          <Link href="/terms" className="transition-colors duration-200 hover:text-[var(--ink)]">
             Terms
           </Link>
         </nav>

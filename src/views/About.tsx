@@ -1,17 +1,11 @@
 import { ArrowDown, ArrowRight, CircleDotDashed } from 'lucide-react'
-import { Link } from 'react-router'
-import Seo from '../components/Seo'
+import Link from 'next/link'
 import SiteLayout from '../components/SiteLayout'
 import CTA from '../sections/CTA'
 
 export default function About() {
   return (
     <SiteLayout>
-      <Seo
-        title="About Us"
-        description="Cuppet is building a better way to use AI: selected, relevant information from the tools you already use, delivered when it matters."
-        path="/about"
-      />
       <main>
         <section className="relative border-b border-[var(--rule)] px-5 pb-20 pt-36 sm:px-8 sm:pb-28 sm:pt-44">
           <div className="pointer-events-none absolute inset-0 grid-bg opacity-60" />
@@ -40,11 +34,8 @@ export default function About() {
         <section className="px-5 py-20 sm:px-8 sm:py-32">
           <div className="mx-auto grid max-w-6xl gap-10 border-t border-[var(--rule)] pt-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--ink-faint)]">
+              <h2 className="font-display text-[2.6rem] font-normal leading-none tracking-[-0.025em] text-[var(--ink)] sm:text-[3.25rem]">
                 The problem
-              </p>
-              <h2 className="mt-4 font-display text-[2.6rem] font-normal leading-none tracking-[-0.025em] text-[var(--ink)] sm:text-[3.25rem]">
-                Too much signal work.
               </h2>
             </div>
             <p className="max-w-3xl text-[17px] leading-8 text-[var(--ink-soft)] sm:text-[19px] sm:leading-9">
@@ -68,11 +59,8 @@ export default function About() {
         <section className="border-y border-[var(--rule)] bg-[var(--paper-2)] px-5 py-20 sm:px-8 sm:py-32">
           <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--ink-faint)]">
+              <h2 className="font-display text-[2.6rem] font-normal leading-none tracking-[-0.025em] text-[var(--ink)] sm:text-[3.25rem]">
                 The solution
-              </p>
-              <h2 className="mt-4 font-display text-[2.6rem] font-normal leading-none tracking-[-0.025em] text-[var(--ink)] sm:text-[3.25rem]">
-                Quiet layer. Clear results.
               </h2>
             </div>
             <div className="max-w-3xl">
@@ -94,7 +82,7 @@ export default function About() {
                 attention you already have.
               </p>
               <Link
-                to="/"
+                href="/"
                 className="group mt-10 inline-flex items-center gap-2 text-sm font-semibold text-[var(--forest)]"
               >
                 See the product

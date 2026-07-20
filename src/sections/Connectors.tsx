@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useRef, useState } from 'react'
 import { Grid2X2, X } from 'lucide-react'
 import { BiLogoMicrosoftTeams } from 'react-icons/bi'
