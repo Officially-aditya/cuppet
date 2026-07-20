@@ -1,8 +1,9 @@
-import { mkdir, writeFile } from 'node:fs/promises'
+import { copyFile, mkdir, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
 const serverDirectory = resolve('dist/server')
 const workerPath = resolve(serverDirectory, 'index.js')
+const hostingDirectory = resolve('dist/.openai')
 
 const worker = `export default {
   async fetch(request, env) {
@@ -20,3 +21,5 @@ const worker = `export default {
 
 await mkdir(serverDirectory, { recursive: true })
 await writeFile(workerPath, worker)
+await mkdir(hostingDirectory, { recursive: true })
+await copyFile(resolve('.openai/hosting.json'), resolve(hostingDirectory, 'hosting.json'))
