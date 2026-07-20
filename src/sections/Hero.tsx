@@ -7,12 +7,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 grid-bg" />
       <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-16">
         <div className="min-w-0 text-center lg:text-left">
-          <span className="inline-flex items-center gap-2.5 rounded-full border border-[var(--rule)] bg-[var(--paper)]/80 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--ink-faint)]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--leaf)] pulse-dot" />
-            Private beta · iOS & Android
-          </span>
-
-          <h1 className="mt-8 font-display text-[3.55rem] font-normal leading-[0.91] tracking-[-0.035em] text-[var(--ink)] sm:text-[5rem] lg:text-[5.25rem]">
+          <h1 className="font-display text-[3.55rem] font-normal leading-[0.91] tracking-[-0.035em] text-[var(--ink)] sm:text-[5rem] lg:text-[5.25rem]">
             Work gets done.
             <span className="mt-1 block font-display-italic text-[var(--forest-mid)]">
               You get a message.

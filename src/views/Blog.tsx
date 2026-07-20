@@ -1,7 +1,6 @@
 import { ArrowRight } from 'lucide-react'
-import { Link } from 'react-router'
+import Link from 'next/link'
 import EditorialVisual from '../components/EditorialVisual'
-import Seo from '../components/Seo'
 import SiteLayout from '../components/SiteLayout'
 import { blogPosts } from '../data/blog'
 import CTA from '../sections/CTA'
@@ -11,11 +10,6 @@ export default function Blog() {
 
   return (
     <SiteLayout>
-      <Seo
-        title="Blog"
-        description="Ideas from Cuppet about selected intelligence, connected tools, trustworthy AI, and designing for attention."
-        path="/blog"
-      />
       <main>
         <section className="relative border-b border-[var(--rule)] px-5 pb-16 pt-36 sm:px-8 sm:pb-24 sm:pt-44">
           <div className="pointer-events-none absolute inset-0 grid-bg opacity-50" />
@@ -38,7 +32,7 @@ export default function Blog() {
         {featured && (
           <section className="border-b border-[var(--rule)] px-5 py-14 sm:px-8 sm:py-20">
             <article className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-              <Link to={`/blog/${featured.slug}`} aria-label={`Read ${featured.title}`}>
+              <Link href={`/blog/${featured.slug}`} aria-label={`Read ${featured.title}`}>
                 <EditorialVisual variant={featured.visual} />
               </Link>
               <div>
@@ -52,7 +46,7 @@ export default function Blog() {
                 </div>
                 <h2 className="mt-5 max-w-xl font-display text-[2.4rem] font-normal leading-[0.98] tracking-[-0.03em] text-[var(--ink)] sm:text-[3.1rem]">
                   <Link
-                    to={`/blog/${featured.slug}`}
+                    href={`/blog/${featured.slug}`}
                     className="transition-colors duration-200 hover:text-[var(--forest-mid)]"
                   >
                     {featured.title}
@@ -62,7 +56,7 @@ export default function Blog() {
                   {featured.excerpt}
                 </p>
                 <Link
-                  to={`/blog/${featured.slug}`}
+                  href={`/blog/${featured.slug}`}
                   className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[var(--forest)]"
                 >
                   Read article
@@ -94,7 +88,7 @@ export default function Blog() {
                       </div>
                       <h2 className="mt-3 max-w-xl text-[1.35rem] font-semibold tracking-[-0.03em] text-[var(--ink)] sm:text-[1.5rem]">
                         <Link
-                          to={`/blog/${post.slug}`}
+                          href={`/blog/${post.slug}`}
                           className="transition-colors duration-200 hover:text-[var(--forest-mid)]"
                         >
                           {post.title}
@@ -104,7 +98,7 @@ export default function Blog() {
                         {post.excerpt}
                       </p>
                       <Link
-                        to={`/blog/${post.slug}`}
+                        href={`/blog/${post.slug}`}
                         className="group mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--forest)]"
                       >
                         Read article
@@ -112,7 +106,7 @@ export default function Blog() {
                       </Link>
                     </div>
                     <Link
-                      to={`/blog/${post.slug}`}
+                      href={`/blog/${post.slug}`}
                       className="hidden sm:block"
                       aria-label={`Read ${post.title}`}
                     >

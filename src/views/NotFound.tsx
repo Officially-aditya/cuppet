@@ -1,17 +1,10 @@
 import { ArrowLeft } from 'lucide-react'
-import { Link } from 'react-router'
-import Seo from '../components/Seo'
+import Link from 'next/link'
 import SiteLayout from '../components/SiteLayout'
 
 export default function NotFound() {
   return (
     <SiteLayout>
-      <Seo
-        title="Page not found"
-        description="The page you requested could not be found."
-        path="/404"
-        noIndex
-      />
       <main className="flex min-h-[78vh] items-center px-5 pb-20 pt-32 sm:px-8">
         <div className="mx-auto w-full max-w-6xl border-y border-black/10 py-20 text-center">
           <p className="font-mono text-[10px] text-black/30">404 / NOT FOUND</p>
@@ -22,7 +15,7 @@ export default function NotFound() {
             This page may have moved, or the address may be incorrect.
           </p>
           <Link
-            to="/"
+            href="/"
             className="group mt-9 inline-flex items-center gap-2 rounded-full bg-[#173c2a] px-5 py-3 text-sm font-semibold text-[#F5F3EE]"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />

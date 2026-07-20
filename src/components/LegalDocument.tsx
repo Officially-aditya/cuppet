@@ -1,11 +1,8 @@
 import type { ReactNode } from 'react'
-import Seo from './Seo'
 import SiteLayout from './SiteLayout'
 
 type LegalDocumentProps = {
   title: string
-  description: string
-  path: string
   effectiveDate: string
   lastUpdated: string
   content: string
@@ -146,8 +143,6 @@ function renderBlock(block: string, index: number) {
 
 export default function LegalDocument({
   title,
-  description,
-  path,
   effectiveDate,
   lastUpdated,
   content,
@@ -159,7 +154,6 @@ export default function LegalDocument({
 
   return (
     <SiteLayout>
-      <Seo title={title} description={description} path={path} />
       <main>
         <header className="relative border-b border-[var(--rule)] px-5 pb-16 pt-36 sm:px-8 sm:pb-20 sm:pt-44">
           <div className="pointer-events-none absolute inset-0 grid-bg opacity-45" />
