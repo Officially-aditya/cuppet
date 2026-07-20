@@ -1,7 +1,7 @@
 import Seo from '../components/Seo'
 import SiteLayout from '../components/SiteLayout'
 import Hero from '../sections/Hero'
-import PromptMarquee from '../sections/PromptMarquee'
+import Connectors from '../sections/Connectors'
 import HowItWorks from '../sections/HowItWorks'
 import Features from '../sections/Features'
 import Security from '../sections/Security'
@@ -18,7 +18,7 @@ export default function Home() {
       />
       <main>
         <Hero />
-        <PromptMarquee />
+        <Connectors />
         <HowItWorks />
         <Features />
         <Security />
