@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type MouseEvent } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Grid2X2, X } from 'lucide-react'
 import { BiLogoMicrosoftTeams } from 'react-icons/bi'
 import { FaLinkedin, FaSalesforce, FaSlack } from 'react-icons/fa'
@@ -240,15 +240,14 @@ function ConnectorCard({
   tabIndex,
 }: {
   connector: Connector
-  onOpen: (connector: Connector, event: MouseEvent<HTMLButtonElement>) => void
+  onOpen: (connector: Connector) => void
   tabIndex?: number
 }) {
   return (
     <button
       type="button"
       tabIndex={tabIndex}
-      aria-haspopup="dialog"
-      onClick={(event) => onOpen(connector, event)}
+      onClick={() => onOpen(connector)}
       className="group grid h-[82px] grid-cols-[auto_minmax(0,1fr)] items-center gap-3 rounded-2xl border border-[var(--rule)] bg-[var(--paper)]/85 p-4 text-left shadow-[0_14px_35px_-30px_rgba(12,25,17,0.5)] transition duration-200 hover:-translate-y-0.5 hover:border-[var(--rule-strong)] hover:bg-[#e0e9df] hover:shadow-[0_18px_35px_-26px_rgba(12,25,17,0.38)]"
     >
       <span
@@ -269,35 +268,31 @@ export default function Connectors() {
   const [browseOpen, setBrowseOpen] = useState(false)
   const detailCloseRef = useRef<HTMLButtonElement>(null)
   const browseCloseRef = useRef<HTMLButtonElement>(null)
-  const openerRef = useRef<HTMLButtonElement>(null)
   const exploreRef = useRef<HTMLButtonElement>(null)
-  const blocked = Boolean(activeConnector || browseOpen)
+  const blocked = browseOpen
 
   useEffect(() => {
-    if (activeConnector) detailCloseRef.current?.focus()
-    else if (browseOpen) browseCloseRef.current?.focus()
-  }, [activeConnector, browseOpen])
+    if (browseOpen) browseCloseRef.current?.focus()
+  }, [browseOpen])
 
   useEffect(() => {
-    if (!blocked) return
+    if (!browseOpen) return
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     return () => {
       document.body.style.overflow = previousOverflow
     }
-  }, [blocked])
+  }, [browseOpen])
 
-  const openConnector = (connector: Connector, event: MouseEvent<HTMLButtonElement>) => {
-    openerRef.current = event.currentTarget
+  const openConnector = (connector: Connector) => {
+    setBrowseOpen(false)
     setActiveConnector(connector)
+    requestAnimationFrame(() => detailCloseRef.current?.focus())
   }
 
   const closeConnector = () => {
     setActiveConnector(null)
-    requestAnimationFrame(() => {
-      if (browseOpen) browseCloseRef.current?.focus()
-      else openerRef.current?.focus()
-    })
+    requestAnimationFrame(() => exploreRef.current?.focus())
   }
 
   const closeBrowse = () => {
@@ -334,32 +329,104 @@ export default function Connectors() {
         </div>
 
         <div className="min-w-0">
-          <div
-            className="grid grid-cols-2 gap-2.5 sm:gap-3"
-            aria-hidden={blocked || undefined}
-          >
-            {CONNECTORS.slice(0, 6).map((connector) => (
-              <ConnectorCard
-                key={connector.name}
-                connector={connector}
-                onOpen={openConnector}
+          {activeConnector ? (
+            <div
+              className="connector-dialog-in relative flex min-h-[270px] flex-col rounded-2xl border border-[var(--rule-strong)] bg-[var(--paper)] p-6 shadow-[0_20px_45px_-34px_rgba(12,25,17,0.48)] sm:p-7"
+              aria-live="polite"
+              aria-labelledby="connector-detail-title"
+            >
+              <button
+                type="button"
+                ref={detailCloseRef}
                 tabIndex={blocked ? -1 : 0}
-              />
-            ))}
-          </div>
+                aria-label="Close connector details"
+                onClick={closeConnector}
+                className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--paper)] text-[var(--ink-soft)] transition hover:bg-[var(--paper-3)] hover:text-[var(--ink)]"
+              >
+                <X className="h-4 w-4" aria-hidden="true" />
+              </button>
 
-          <button
-            type="button"
-            ref={exploreRef}
-            tabIndex={blocked ? -1 : 0}
-            aria-haspopup="dialog"
-            aria-expanded={browseOpen}
-            onClick={() => setBrowseOpen(true)}
-            className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-[var(--forest)] px-5 py-3 text-[13px] font-semibold text-[var(--paper)] transition-colors hover:bg-[#102e20]"
-          >
-            <Grid2X2 className="h-4 w-4" aria-hidden="true" />
-            Explore more
-          </button>
+              <div className="flex items-center gap-4 pr-12">
+                <span
+                  className="flex h-14 w-14 shrink-0 items-center justify-center text-[46px]"
+                  style={{ color: activeConnector.color }}
+                >
+                  <activeConnector.Icon aria-hidden="true" focusable="false" />
+                </span>
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--ink-faint)]">
+                    Connector
+                  </p>
+                  <h3
+                    id="connector-detail-title"
+                    className="mt-1 font-display text-[2rem] font-normal leading-none tracking-[-0.03em] text-[var(--ink)]"
+                  >
+                    {activeConnector.name}
+                  </h3>
+                </div>
+              </div>
+
+              <p className="mt-6 max-w-[32rem] text-[15px] leading-7 text-[var(--ink-soft)]">
+                {activeConnector.description}
+              </p>
+              <p className="mt-auto pt-5 text-[10px] font-medium uppercase tracking-[0.12em] text-[var(--ink-faint)]">
+                Choose another connector below
+              </p>
+            </div>
+          ) : (
+            <div
+              className="grid grid-cols-2 gap-2.5 sm:gap-3"
+              aria-hidden={blocked || undefined}
+            >
+              {CONNECTORS.slice(0, 6).map((connector) => (
+                <ConnectorCard
+                  key={connector.name}
+                  connector={connector}
+                  onOpen={openConnector}
+                  tabIndex={blocked ? -1 : 0}
+                />
+              ))}
+            </div>
+          )}
+
+          <div className="mt-5 flex flex-wrap items-center gap-2">
+            {activeConnector &&
+              CONNECTORS.slice(0, 6).map((connector) => {
+                const active = connector.name === activeConnector.name
+                return (
+                  <button
+                    key={connector.name}
+                    type="button"
+                    tabIndex={blocked ? -1 : 0}
+                    aria-label={`Show ${connector.name} connector`}
+                    aria-pressed={active}
+                    title={connector.name}
+                    onClick={() => setActiveConnector(connector)}
+                    className={`flex h-10 w-10 items-center justify-center rounded-full border bg-[var(--paper)] text-[21px] transition hover:-translate-y-0.5 hover:bg-[var(--paper-3)] ${
+                      active
+                        ? 'border-[var(--forest-mid)] shadow-[0_0_0_2px_rgba(36,88,59,0.12)]'
+                        : 'border-[var(--rule)]'
+                    }`}
+                    style={{ color: connector.color }}
+                  >
+                    <connector.Icon aria-hidden="true" focusable="false" />
+                  </button>
+                )
+              })}
+
+            <button
+              type="button"
+              ref={exploreRef}
+              tabIndex={blocked ? -1 : 0}
+              aria-haspopup="dialog"
+              aria-expanded={browseOpen}
+              onClick={() => setBrowseOpen(true)}
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-[var(--forest)] px-5 text-[13px] font-semibold text-[var(--paper)] transition-colors hover:bg-[#102e20]"
+            >
+              <Grid2X2 className="h-4 w-4" aria-hidden="true" />
+              Explore more
+            </button>
+          </div>
         </div>
       </div>
 
@@ -412,56 +479,6 @@ export default function Connectors() {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-      )}
-
-      {activeConnector && (
-        <div
-          className="connector-dialog-in fixed inset-0 z-[80] grid place-items-center bg-black/25 p-4 backdrop-blur-[6px]"
-          onClick={closeConnector}
-          onKeyDown={(event) => {
-            if (event.key === 'Escape') closeConnector()
-            if (event.key === 'Tab') {
-              event.preventDefault()
-              detailCloseRef.current?.focus()
-            }
-          }}
-        >
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="connector-detail-title"
-            onClick={(event) => event.stopPropagation()}
-            className="relative w-full max-w-[480px] rounded-2xl border border-[var(--rule-strong)] bg-[var(--paper)] p-7 shadow-[0_28px_72px_rgba(12,25,17,0.22)] sm:p-8"
-          >
-            <button
-              type="button"
-              ref={detailCloseRef}
-              aria-label="Close connector details"
-              onClick={closeConnector}
-              className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--paper)] text-[var(--ink-soft)] transition hover:bg-[var(--paper-3)] hover:text-[var(--ink)]"
-            >
-              <X className="h-4 w-4" aria-hidden="true" />
-            </button>
-            <span
-              className="mb-7 flex h-14 w-14 items-center justify-center text-[52px]"
-              style={{ color: activeConnector.color }}
-            >
-              <activeConnector.Icon aria-hidden="true" focusable="false" />
-            </span>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--ink-faint)]">
-              Connector
-            </p>
-            <h3
-              id="connector-detail-title"
-              className="mt-2 pr-12 font-display text-[2.35rem] font-normal leading-none tracking-[-0.03em] text-[var(--ink)]"
-            >
-              {activeConnector.name}
-            </h3>
-            <p className="mt-5 text-[15px] leading-7 text-[var(--ink-soft)]">
-              {activeConnector.description}
-            </p>
           </div>
         </div>
       )}
