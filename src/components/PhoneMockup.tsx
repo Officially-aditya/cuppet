@@ -99,7 +99,9 @@ export default function PhoneMockup() {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })
   }, [step])
 
-  const visible = SCRIPT.slice(0, step).map((s) => s.msg)
+  const visible = SCRIPT.slice(0, step)
+    .map((s, idx) => ({ msg: s.msg, id: idx }))
+    .filter(({ msg }, i, arr) => msg.kind !== 'typing' || i === arr.length - 1)
 
   return (
     <div className="relative w-full max-w-[390px] select-none">
@@ -131,9 +133,9 @@ export default function PhoneMockup() {
             backgroundSize: '18px 18px',
           }}
         >
-          {visible.map((m, i) => (
+          {visible.map(({ msg: m, id }) => (
             <div
-              key={`${step === 0 ? 'r' : 's'}-${i}`}
+              key={id}
               className={
                 m.kind === 'out'
                   ? 'flex justify-end'
