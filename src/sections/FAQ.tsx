@@ -6,31 +6,31 @@ const QUESTIONS = [
     n: '01',
     question: 'What does Cuppet do?',
     answer:
-      'Connect the apps you already use, describe a routine in plain language, and choose a schedule. A Cuppet agent runs it for you.',
+      'Cuppet turns a plain-language request into a persistent agent. Connect the tools it needs, choose when it should run, and receive the finished result in chat.',
   },
   {
     n: '02',
     question: 'How is this different from a chatbot?',
     answer:
-      'A chatbot waits for you to open it. Cuppet runs scheduled work without another prompt and keeps a log of what happened.',
+      'A chatbot responds when you start a conversation. Cuppet can run recurring work on its own, such as preparing a morning brief, then message you when the result is ready.',
   },
   {
     n: '03',
     question: 'What is a scheduled agent?',
     answer:
-      'A saved task with a schedule, connected tools, and limits you approve. It could be a weekday morning brief or a weekly digest.',
+      'It is a saved instruction with a schedule, connected tools, and approved limits. For example, an agent could check your sources every weekday morning and send you a concise brief.',
   },
   {
     n: '04',
     question: 'Which apps can I connect?',
     answer:
-      "We're building connectors for tools like Gmail, Calendar, Drive, Docs, Notion, and Slack. More are planned, and every connection is optional.",
+      "Cuppet is building connectors for tools like Gmail, Calendar, Drive, Docs, Notion, and Slack. You choose which connections to enable for each agent, and more connectors are planned.",
   },
   {
     n: '05',
     question: 'Is my data private?',
     answer:
-      'You control access. Choose which apps an agent can use, then review those permissions before approving them.',
+      'You decide what each agent can access. Select its connected apps and review the requested permissions before approving the agent, so it only has access to the tools you choose.',
   },
 ]
 
@@ -41,7 +41,6 @@ export default function FAQ() {
         <SectionHeading
           eyebrow="FAQ"
           title="Common questions"
-          sub="Learn how Cuppet turns plain-language requests into scheduled agents, which apps you can connect, and how you stay in control of access."
           align="left"
         />
 
