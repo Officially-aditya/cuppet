@@ -5,6 +5,7 @@ import HowItWorks from '../sections/HowItWorks'
 import Features from '../sections/Features'
 import Security from '../sections/Security'
 import Examples from '../sections/Examples'
+import FAQ from '../sections/FAQ'
 import CTA from '../sections/CTA'
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         <Features />
         <Security />
         <Examples />
+        <FAQ />
         <CTA />
       </main>
     </SiteLayout>
