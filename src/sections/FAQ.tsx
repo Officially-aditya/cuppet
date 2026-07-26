@@ -41,7 +41,7 @@ export default function FAQ() {
         <SectionHeading
           eyebrow="FAQ"
           title="Common questions"
-          sub="Quick answers about how Cuppet works, connectors, and privacy."
+          sub="Learn how Cuppet turns plain-language requests into scheduled agents, which apps you can connect, and how you stay in control of access."
           align="left"
         />
 
