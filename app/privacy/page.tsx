@@ -4,7 +4,7 @@ import Privacy from '@/views/Privacy'
 
 export const metadata: Metadata = createMetadata({
   title: 'Privacy Policy',
-  description: 'How Sydney collects, uses, stores, shares, and protects personal data.',
+  description: 'How Cuppet collects, uses, stores, shares, and protects personal data.',
   path: '/privacy',
 })
 

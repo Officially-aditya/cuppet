@@ -4,7 +4,7 @@ import Terms from '@/views/Terms'
 
 export const metadata: Metadata = createMetadata({
   title: 'Terms and Conditions',
-  description: 'Terms and Conditions governing access to and use of the Sydney service.',
+  description: 'Terms and Conditions governing access to and use of the Cuppet service.',
   path: '/terms',
 })
 

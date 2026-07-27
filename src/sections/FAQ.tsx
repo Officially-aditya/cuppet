@@ -41,6 +41,7 @@ export default function FAQ() {
         <SectionHeading
           eyebrow="FAQ"
           title="Common questions"
+          sub="Still have Questions? We've got you"
           align="left"
         />
 
