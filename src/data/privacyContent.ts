@@ -1,5 +1,5 @@
 export const privacyContent = String.raw`
-This Privacy Policy explains how [OPERATOR'S FULL LEGAL NAME], an individual operating the early-stage digital product Cuppet ("Cuppet," "we," "us," or "our"), collects, uses, stores, shares, and protects personal data when you use the Cuppet application, website, agents, AI assistants, connected-service integrations, notifications, and related services. Cuppet is not presently operated through an incorporated company or other separate legal entity.
+This Privacy Policy explains how Aditya Yadav, an individual operating the early-stage digital product Cuppet ("Cuppet," "we," "us," or "our"), collects, uses, stores, shares, and protects personal data when you use the Cuppet application, website, agents, AI assistants, connected-service integrations, notifications, and related services. Cuppet is not presently operated through an incorporated company or other separate legal entity.
 
 It also explains your privacy choices and rights.
 
@@ -7,17 +7,17 @@ It also explains your privacy choices and rights.
 
 The person responsible for processing your personal data is:
 
-[OPERATOR'S FULL LEGAL NAME], individual operator of Cuppet
-Location: [CITY, STATE, INDIA]
+Aditya Yadav, individual operator of Cuppet
+Location: Delhi, India
 Correspondence address, if applicable: [CORRESPONDENCE ADDRESS]
 Privacy email: [PRIVACY EMAIL]
 Support email: [SUPPORT EMAIL]
 
 India grievance contact:
 
-Name: [GRIEVANCE OFFICER NAME]
+Name: Sushant Singh
 Email: [GRIEVANCE OFFICER EMAIL]
-Address: [GRIEVANCE OFFICER ADDRESS]
+Address: Delhi, India
 
 Where required by applicable law, the individual operator acts as the Data Fiduciary, controller, or person responsible for deciding how and why personal data is processed. The absence of an incorporated company does not remove these responsibilities.
 
@@ -275,7 +275,7 @@ You can revoke Cuppet's Google access through Cuppet's connector settings or you
 
 ## 8. India Digital Personal Data Protection notice
 
-Where the Digital Personal Data Protection Act, 2023 applies, [OPERATOR'S FULL LEGAL NAME], as the individual operator of Cuppet, acts as the Data Fiduciary for personal data for which the operator determines the purpose and means of processing.
+Where the Digital Personal Data Protection Act, 2023 applies, Aditya Yadav, as the individual operator of Cuppet, acts as the Data Fiduciary for personal data for which the operator determines the purpose and means of processing.
 
 We process personal data only for a lawful and specified purpose, based on your consent or another use permitted by applicable law. When relying on consent, we request only personal data reasonably necessary for the specified purpose.
 
@@ -554,17 +554,17 @@ If we require new consent for a materially different purpose, we will request it
 
 For privacy questions, requests, or complaints, contact:
 
-[OPERATOR'S FULL LEGAL NAME], individual operator of Cuppet
-Location: [CITY, STATE, INDIA]
+Aditya Yadav, individual operator of Cuppet
+Location: Delhi, India
 Correspondence address, if applicable: [CORRESPONDENCE ADDRESS]
 Privacy email: [PRIVACY EMAIL]
 Privacy request page: [PRIVACY REQUEST URL]
 
 Grievance Officer:
 
-Name: [GRIEVANCE OFFICER NAME]
+Name: Sushant Singh
 Email: [GRIEVANCE OFFICER EMAIL]
-Address: [GRIEVANCE OFFICER ADDRESS]
+Address: Delhi, India
 
 We aim to acknowledge privacy requests promptly and resolve grievances within 30 days, unless applicable law permits or requires a different period.
 `

@@ -1,7 +1,7 @@
 export const termsContent = String.raw`
 These Terms and Conditions ("Terms") govern access to and use of the Cuppet mobile application, website, artificial intelligence assistants, agents, connected-service integrations, notifications, and related services (collectively, the "Service").
 
-The Service is an early-stage digital product operated by [OPERATOR'S FULL LEGAL NAME], an individual based in [CITY, STATE, INDIA], under the product name "Cuppet" ("Cuppet," "we," "us," or "our"). Cuppet is not presently operated through an incorporated company or other separate legal entity.
+The Service is an early-stage digital product operated by Aditya Yadav, an individual based in Delhi, India, under the product name "Cuppet" ("Cuppet," "we," "us," or "our"). Cuppet is not presently operated through an incorporated company or other separate legal entity.
 
 By creating an account, accessing the Service, connecting a third-party account, or otherwise using Cuppet, you agree to these Terms and the Privacy Policy below. If you do not agree, you must not use the Service.
 
@@ -215,7 +215,7 @@ Nothing in this section limits a genuine privacy complaint or a right that canno
 
 ## 14. Intellectual property
 
-Cuppet, including its software, design, branding, templates, documentation, and underlying technology, is owned by or licensed to [OPERATOR'S FULL LEGAL NAME], the individual operator of Cuppet. These Terms do not transfer ownership of Cuppet's intellectual property to you.
+Cuppet, including its software, design, branding, templates, documentation, and underlying technology, is owned by or licensed to Aditya Yadav, the individual operator of Cuppet. These Terms do not transfer ownership of Cuppet's intellectual property to you.
 
 Subject to these Terms, we grant you a limited, revocable, non-exclusive, non-transferable licence to use the Service for its intended purpose.
 
@@ -336,7 +336,7 @@ These Terms are governed by the laws of India, without regard to conflict-of-law
 
 Before commencing formal proceedings, you and Cuppet agree to make a good-faith effort to resolve the dispute by contacting [LEGAL EMAIL OR SUPPORT EMAIL]. This does not restrict either party from seeking urgent relief or exercising a non-waivable statutory right.
 
-Subject to applicable consumer law, courts located in [CITY, STATE, INDIA] will have jurisdiction.
+Subject to applicable consumer law, courts located in Delhi, India will have jurisdiction.
 
 If you live in a jurisdiction that gives you mandatory local consumer rights or access to local courts, those rights are not displaced by this section.
 
@@ -362,8 +362,8 @@ These Terms, the Privacy Policy, and any feature-specific terms constitute the a
 
 For questions about these Terms, contact:
 
-[OPERATOR'S FULL LEGAL NAME], individual operator of Cuppet
-Location: [CITY, STATE, INDIA]
+Aditya Yadav, individual operator of Cuppet
+Location: Delhi, India
 Correspondence address, if applicable: [CORRESPONDENCE ADDRESS]
 Email: [SUPPORT EMAIL]
 Website: [WEBSITE URL]
