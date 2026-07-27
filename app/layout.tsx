@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
+import { SITE_URL } from '@/lib/metadata'
 import '../src/index.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://cuppet-app.shatslabs.chatgpt.site'),
+  metadataBase: new URL(SITE_URL),
   title: 'Cuppet',
   description:
     'Create persistent agents in one sentence. Cuppet works across your connected accounts, keeps the schedule, and sends the result to your inbox.',
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
     title: 'Cuppet',
     description:
       'Create persistent agents in one sentence. Cuppet works across your connected accounts, keeps the schedule, and sends the result to your inbox.',
-    url: 'https://cuppet-app.shatslabs.chatgpt.site',
+    url: SITE_URL,
     siteName: 'Cuppet',
     images: [
       {

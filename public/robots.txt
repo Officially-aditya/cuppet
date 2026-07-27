@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://cuppet-app.shatslabs.chatgpt.site/sitemap.xml

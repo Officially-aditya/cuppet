@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 
 export const SITE_NAME = 'Cuppet'
-export const SITE_URL = 'https://cuppet-app.shatslabs.chatgpt.site'
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://cuppet-app.shatslabs.chatgpt.site'
 export const DEFAULT_OG_IMAGE = '/og-image.png'
 
 export type MetadataOptions = {
