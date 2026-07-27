@@ -9,14 +9,14 @@ The person responsible for processing your personal data is:
 
 Aditya Yadav, individual operator of Cuppet
 Location: Delhi, India
-Correspondence address, if applicable: [CORRESPONDENCE ADDRESS]
-Privacy email: [PRIVACY EMAIL]
-Support email: [SUPPORT EMAIL]
+Correspondence address, if applicable: Delhi, India
+Privacy email: adityakumaryadav74@gmail.com
+Support email: adityakumaryadav74@gmail.com
 
 India grievance contact:
 
 Name: Sushant Singh
-Email: [GRIEVANCE OFFICER EMAIL]
+Email: work.sushant9800@gmail.com
 Address: Delhi, India
 
 Where required by applicable law, the individual operator acts as the Data Fiduciary, controller, or person responsible for deciding how and why personal data is processed. The absence of an incorporated company does not remove these responsibilities.
@@ -234,7 +234,7 @@ Cuppet may currently use providers such as Google Gemini and/or Anthropic. Certa
 
 We limit submitted information to what is reasonably necessary for the requested feature. OAuth credentials, passwords, private keys, and authentication tokens are not intended to be submitted to AI models.
 
-AI providers process submitted information on our behalf or under their applicable service terms. Their technical retention can depend on the contract, account configuration, and service used. We maintain an up-to-date subprocessor disclosure at [SUBPROCESSOR LIST URL].
+AI providers process submitted information on our behalf or under their applicable service terms. Their technical retention can depend on the contract, account configuration, and service used. We maintain an up-to-date subprocessor disclosure at www.cuppet.in/subprocessors.
 
 We do not use AI outputs to make decisions intended to produce legal or similarly significant effects concerning employment, credit, insurance, housing, healthcare, or access to essential services.
 
@@ -301,7 +301,7 @@ You may request:
 - Grievance redressal.
 - Nomination of another individual to exercise your rights in the event of death or incapacity, where applicable.
 
-Privacy requests may be submitted through [PRIVACY REQUEST URL] or [PRIVACY EMAIL].
+Privacy requests may be submitted through www.cuppet.in/privacy or adityakumaryadav74@gmail.com.
 
 We may verify your identity before acting on a request. You should provide verifiably authentic information and must not impersonate another person or submit a false or frivolous grievance.
 
@@ -385,7 +385,7 @@ We retain information only for the period reasonably necessary for the purpose d
 | Support communications | As reasonably necessary to resolve the request and maintain appropriate records |
 | Optional Google Drive archives | Until you delete them from Google Drive or use a supported deletion function |
 | Account information | Until account deletion, subject to legal or security retention |
-| Backups | Until overwritten through our routine backup cycle, ordinarily no longer than [BACKUP RETENTION PERIOD] |
+| Backups | Until overwritten through our routine backup cycle, ordinarily no longer than 30 days |
 
 Cuppet messages are ordinarily removed from the user-facing Service approximately 30 days after they are sent or created. Removal from the user-facing Service may not constitute immediate erasure of every restricted record. Where applicable law requires us to retain personal data, associated traffic data, security records, or processing logs for a prescribed period, we retain only the information reasonably required for that purpose in a restricted environment. Such information is not used for ordinary product personalisation and is erased after the applicable period unless further retention is required by law.
 
@@ -463,7 +463,7 @@ You can also:
 - Delete individual agents.
 - Request account deletion.
 
-To exercise a privacy right, email [PRIVACY EMAIL] or visit [PRIVACY REQUEST URL].
+To exercise a privacy right, email adityakumaryadav74@gmail.com or visit www.cuppet.in/privacy.
 
 We may need to verify your identity before completing a request. We will respond within the period required by applicable law. We aim to acknowledge privacy requests promptly and resolve grievances within 30 days, unless applicable law permits or requires a different period.
 
@@ -491,9 +491,9 @@ Cuppet does not sell personal information or share it for cross-context behaviou
 
 You may request deletion through:
 
-- The Cuppet application: [IN-APP DELETION PATH]
-- The website: [ACCOUNT DELETION URL]
-- Email: [PRIVACY EMAIL]
+- The Cuppet application: Settings -> Profile -> Delete my account
+- The website: www.cuppet.in/profile/delete
+- Email: adityakumaryadav74@gmail.com
 
 After verifying the request, we will:
 
@@ -518,7 +518,7 @@ Residual encrypted copies may remain in backups until the normal backup cycle co
 
 Cuppet is intended for people aged 18 and over.
 
-We do not knowingly permit children to create accounts. If you believe a child has provided personal data, contact [PRIVACY EMAIL]. We will investigate and take appropriate deletion or restriction measures.
+We do not knowingly permit children to create accounts. If you believe a child has provided personal data, contact adityakumaryadav74@gmail.com. We will investigate and take appropriate deletion or restriction measures.
 
 If Cuppet later offers a service to minors, we will introduce age assurance, verifiable parental consent, notices, protection against detrimental processing, and other safeguards required by applicable law before enabling that service.
 
@@ -556,14 +556,14 @@ For privacy questions, requests, or complaints, contact:
 
 Aditya Yadav, individual operator of Cuppet
 Location: Delhi, India
-Correspondence address, if applicable: [CORRESPONDENCE ADDRESS]
-Privacy email: [PRIVACY EMAIL]
-Privacy request page: [PRIVACY REQUEST URL]
+Correspondence address, if applicable: Delhi, India
+Privacy email: adityakumaryadav74@gmail.com
+Privacy request page: www.cuppet.in/privacy
 
 Grievance Officer:
 
 Name: Sushant Singh
-Email: [GRIEVANCE OFFICER EMAIL]
+Email: work.sushant9800@gmail.com
 Address: Delhi, India
 
 We aim to acknowledge privacy requests promptly and resolve grievances within 30 days, unless applicable law permits or requires a different period.

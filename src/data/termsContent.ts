@@ -263,9 +263,9 @@ You may stop using Cuppet at any time. You may disconnect connected services wit
 
 You may request account deletion through:
 
-- The in-app account-deletion control: [IN-APP DELETION PATH]
-- The web deletion page: [ACCOUNT DELETION URL]
-- Email: [SUPPORT EMAIL OR PRIVACY EMAIL]
+- The in-app account-deletion control: Settings -> Profile -> Delete my account
+- The web deletion page: www.cuppet.in/profile/delete
+- Email: adityakumaryadav74@gmail.com
 
 We may suspend or terminate your account where reasonably necessary because of:
 
@@ -334,7 +334,7 @@ This clause does not require you to indemnify Cuppet for Cuppet's own negligence
 
 These Terms are governed by the laws of India, without regard to conflict-of-law principles.
 
-Before commencing formal proceedings, you and Cuppet agree to make a good-faith effort to resolve the dispute by contacting [LEGAL EMAIL OR SUPPORT EMAIL]. This does not restrict either party from seeking urgent relief or exercising a non-waivable statutory right.
+Before commencing formal proceedings, you and Cuppet agree to make a good-faith effort to resolve the dispute by contacting adityakumaryadav74@gmail.com. This does not restrict either party from seeking urgent relief or exercising a non-waivable statutory right.
 
 Subject to applicable consumer law, courts located in Delhi, India will have jurisdiction.
 
@@ -364,7 +364,7 @@ For questions about these Terms, contact:
 
 Aditya Yadav, individual operator of Cuppet
 Location: Delhi, India
-Correspondence address, if applicable: [CORRESPONDENCE ADDRESS]
-Email: [SUPPORT EMAIL]
-Website: [WEBSITE URL]
+Correspondence address, if applicable: Delhi, India
+Email: adityakumaryadav74@gmail.com
+Website: https://www.cuppet.in
 `
