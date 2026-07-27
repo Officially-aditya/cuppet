@@ -1,4 +1,6 @@
 export const termsContent = String.raw`
+**Last updated: July 27, 2026**
+
 These Terms and Conditions ("Terms") govern access to and use of the Cuppet mobile application, website, artificial intelligence assistants, agents, connected-service integrations, notifications, and related services (collectively, the "Service").
 
 The Service is an early-stage digital product operated by Aditya Yadav, an individual based in Delhi, India, under the product name "Cuppet" ("Cuppet," "we," "us," or "our"). Cuppet is not presently operated through an incorporated company or other separate legal entity.
