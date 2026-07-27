@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import Breadcrumb from '../components/Breadcrumb'
 import EditorialVisual from '../components/EditorialVisual'
 import SiteLayout from '../components/SiteLayout'
 import { blogPosts } from '../data/blog'
@@ -14,6 +15,7 @@ export default function Blog() {
         <section className="relative border-b border-[var(--rule)] px-5 pb-16 pt-36 sm:px-8 sm:pb-24 sm:pt-44">
           <div className="pointer-events-none absolute inset-0 grid-bg opacity-50" />
           <div className="relative mx-auto max-w-6xl">
+            <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Blog' }]} className="mb-6" />
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--ink-faint)]">
               Blog
             </p>

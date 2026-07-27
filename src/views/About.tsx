@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowRight, CircleDotDashed } from 'lucide-react'
 import Link from 'next/link'
+import Breadcrumb from '../components/Breadcrumb'
 import SiteLayout from '../components/SiteLayout'
 import CTA from '../sections/CTA'
 
@@ -10,6 +11,7 @@ export default function About() {
         <section className="relative border-b border-[var(--rule)] px-5 pb-20 pt-36 sm:px-8 sm:pb-28 sm:pt-44">
           <div className="pointer-events-none absolute inset-0 grid-bg opacity-60" />
           <div className="relative mx-auto max-w-6xl">
+            <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'About' }]} className="mb-6" />
             <div className="max-w-4xl">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--ink-faint)]">
                 About Cuppet

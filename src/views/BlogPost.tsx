@@ -1,5 +1,6 @@
-import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import Breadcrumb from '../components/Breadcrumb'
 import EditorialVisual from '../components/EditorialVisual'
 import SiteLayout from '../components/SiteLayout'
 import { blogPosts, getBlogPost } from '../data/blog'
@@ -17,13 +18,14 @@ export default function BlogPost({ slug }: { slug: string }) {
         <article>
           <header className="px-5 pb-14 pt-32 sm:px-8 sm:pb-16 sm:pt-40">
             <div className="mx-auto max-w-3xl">
-              <Link
-                href="/blog"
-                className="group inline-flex items-center gap-2 text-[13px] font-medium text-[var(--ink-faint)] transition-colors duration-200 hover:text-[var(--ink)]"
-              >
-                <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-1" />
-                All articles
-              </Link>
+              <Breadcrumb
+                items={[
+                  { label: 'Home', href: '/' },
+                  { label: 'Blog', href: '/blog' },
+                  { label: post.title },
+                ]}
+                className="mb-8"
+              />
 
               <div className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-[12px] text-[var(--ink-faint)]">
                 <span className="rounded-full border border-[var(--rule)] bg-[var(--paper-2)] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--forest-mid)]">
@@ -85,14 +87,14 @@ export default function BlogPost({ slug }: { slug: string }) {
               <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--ink-faint)]">
                 Read next
               </p>
-              <h2 className="mt-4 max-w-xl font-display text-[2.4rem] font-normal leading-[0.98] tracking-[-0.03em] text-[var(--ink)] sm:text-[3.1rem]">
+              <h3 className="mt-4 max-w-xl font-display text-[2.4rem] font-normal leading-[0.98] tracking-[-0.03em] text-[var(--ink)] sm:text-[3.1rem]">
                 <Link
                   href={`/blog/${nextPost.slug}`}
                   className="transition-colors duration-200 hover:text-[var(--forest-mid)]"
                 >
                   {nextPost.title}
                 </Link>
-              </h2>
+              </h3>
               <p className="mt-4 max-w-lg text-sm leading-6 text-[var(--ink-soft)]">
                 {nextPost.excerpt}
               </p>

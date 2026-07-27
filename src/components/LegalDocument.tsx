@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import Breadcrumb from './Breadcrumb'
 import SiteLayout from './SiteLayout'
 
 type LegalDocumentProps = {
@@ -158,6 +159,7 @@ export default function LegalDocument({
         <header className="relative border-b border-[var(--rule)] px-5 pb-16 pt-36 sm:px-8 sm:pb-20 sm:pt-44">
           <div className="pointer-events-none absolute inset-0 grid-bg opacity-45" />
           <div className="relative mx-auto max-w-6xl">
+            <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: title }]} className="mb-6" />
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--ink-faint)]">
               Legal
             </p>
