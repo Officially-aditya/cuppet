@@ -180,10 +180,6 @@ export default function LegalDocument({
         </header>
 
         <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
-          <div className="mb-10 border border-[#24583b]/15 bg-[#e3e9df] px-5 py-4 text-[12px] leading-5 text-[#24583b]">
-            This draft contains bracketed fields that must be completed before publication.
-          </div>
-
           <details className="mb-12 border-y border-black/10 py-4 lg:hidden">
             <summary className="cursor-pointer text-[11px] font-semibold uppercase tracking-[0.14em] text-black/50">
               On this page
