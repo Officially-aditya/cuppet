@@ -1,6 +1,4 @@
 export const privacyContent = String.raw`
-**Last updated: July 27, 2026**
-
 This Privacy Policy explains how Aditya Yadav, an individual operating the early-stage digital product Cuppet ("Cuppet," "we," "us," or "our"), collects, uses, stores, shares, and protects personal data when you use the Cuppet application, website, agents, AI assistants, connected-service integrations, notifications, and related services. Cuppet is not presently operated through an incorporated company or other separate legal entity.
 
 It also explains your privacy choices and rights.

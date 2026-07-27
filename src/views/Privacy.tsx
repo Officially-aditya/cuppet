@@ -5,8 +5,8 @@ export default function Privacy() {
   return (
     <LegalDocument
       title="Privacy Policy"
-      effectiveDate="[EFFECTIVE DATE]"
-      lastUpdated="[LAST UPDATED DATE]"
+      effectiveDate="July 27, 2026"
+      lastUpdated="July 27, 2026"
       content={privacyContent}
     />
   )
