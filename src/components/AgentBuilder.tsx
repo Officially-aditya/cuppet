@@ -135,11 +135,11 @@ export default function AgentBuilder() {
   return (
     <div className="mx-auto max-w-3xl rounded-[1.75rem] border border-black/10 bg-[var(--ink)] p-5 surface-elevated sm:p-8">
       <div className="mb-7 flex items-center justify-between">
-        <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[rgba(245,243,238,0.5)]">
+        <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[rgba(245,243,238,0.65)]">
           <Wand2 className="h-3.5 w-3.5 text-[#9ac3a3]" />
           Build an agent
         </div>
-        <span className="flex items-center gap-1.5 text-[10px] font-medium text-[rgba(245,243,238,0.35)]">
+        <span className="flex items-center gap-1.5 text-[10px] font-medium text-[rgba(245,243,238,0.6)]">
           <span className="h-1.5 w-1.5 rounded-full bg-[#78b88a]" />
           Live preview
         </span>
@@ -151,7 +151,7 @@ export default function AgentBuilder() {
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && create(value)}
           placeholder="e.g. Summarize my emails every evening at 6pm"
-          className="flex-1 rounded-xl border border-[rgba(245,243,238,0.1)] bg-[rgba(245,243,238,0.05)] px-5 py-3.5 text-sm text-[var(--paper)] outline-none placeholder:text-[rgba(245,243,238,0.3)] focus:border-[rgba(245,243,238,0.3)]"
+          className="flex-1 rounded-xl border border-[rgba(245,243,238,0.1)] bg-[rgba(245,243,238,0.05)] px-5 py-3.5 text-sm text-[var(--paper)] outline-none placeholder:text-[rgba(245,243,238,0.65)] focus:border-[rgba(245,243,238,0.3)]"
         />
         <button
           onClick={() => create(value)}
@@ -168,7 +168,7 @@ export default function AgentBuilder() {
           <button
             key={p}
             onClick={() => create(p)}
-            className="rounded-full border border-[rgba(245,243,238,0.1)] px-3.5 py-1.5 text-[11px] text-[rgba(245,243,238,0.45)] transition-colors hover:border-[rgba(245,243,238,0.2)] hover:text-[rgba(245,243,238,0.8)]"
+            className="rounded-full border border-[rgba(245,243,238,0.1)] px-3.5 py-1.5 text-[11px] text-[rgba(245,243,238,0.65)] transition-colors hover:border-[rgba(245,243,238,0.2)] hover:text-[rgba(245,243,238,0.8)]"
           >
             {p}
           </button>
@@ -177,7 +177,7 @@ export default function AgentBuilder() {
 
       <div className="mt-6 min-h-[120px]">
         {building && (
-          <p className="flex items-center justify-center gap-3 py-10 text-sm text-[rgba(245,243,238,0.45)]">
+          <p className="flex items-center justify-center gap-3 py-10 text-sm text-[rgba(245,243,238,0.65)]">
             <span className="flex gap-1.5">
               {[0, 1, 2].map((d) => (
                 <span
@@ -208,7 +208,7 @@ export default function AgentBuilder() {
                     Added to your chats
                   </span>
                 </div>
-                <p className="mt-1 line-clamp-2 text-xs text-[rgba(245,243,238,0.45)]">
+                <p className="mt-1 line-clamp-2 text-xs text-[rgba(245,243,238,0.65)]">
                   “{agent.task}”
                 </p>
                 <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -216,7 +216,7 @@ export default function AgentBuilder() {
                     <CalendarClock className="h-3.5 w-3.5" />
                     {agent.schedule}
                   </span>
-                  <code className="rounded-full border border-[rgba(245,243,238,0.1)] bg-black/20 px-3 py-1 font-mono text-[10.5px] text-[rgba(245,243,238,0.3)]">
+                  <code className="rounded-full border border-[rgba(245,243,238,0.1)] bg-black/20 px-3 py-1 font-mono text-[10.5px] text-[rgba(245,243,238,0.65)]">
                     cron · {agent.cron}
                   </code>
                 </div>
@@ -226,7 +226,7 @@ export default function AgentBuilder() {
         )}
 
         {!agent && !building && (
-          <p className="py-10 text-center text-xs text-[rgba(245,243,238,0.25)]">
+          <p className="py-10 text-center text-xs text-[rgba(245,243,238,0.65)]">
             Your new agent will appear here as a contact — ready to message you on schedule.
           </p>
         )}

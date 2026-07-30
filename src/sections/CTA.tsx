@@ -14,13 +14,13 @@ export default function CTA() {
   return (
     <section id="cta" className="border-t border-[var(--rule)]">
       <div className="relative mx-auto w-full max-w-6xl overflow-hidden bg-[var(--ink)] px-5 py-14 text-center sm:px-10 sm:py-24 md:my-8 md:rounded-[var(--radius-surface)]">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[rgba(245,243,238,0.4)]">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[rgba(245,243,238,0.6)]">
           Private beta
         </p>
         <h2 className="mx-auto mt-5 max-w-2xl font-display text-[clamp(2.25rem,11vw,4rem)] font-normal leading-[0.98] tracking-[-0.03em] text-[var(--paper)]">
           Your next status update should arrive on its own.
         </h2>
-        <p className="mx-auto mt-6 max-w-md text-sm leading-6 text-[rgba(245,243,238,0.5)]">
+        <p className="mx-auto mt-6 max-w-md text-sm leading-6 text-[rgba(245,243,238,0.65)]">
           Join the early group shaping Cuppet for iOS and Android. We’ll only write when there is
           something useful to share.
         </p>
@@ -40,7 +40,7 @@ export default function CTA() {
               onChange={(e) => setEmail(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && submit()}
               placeholder="you@example.com"
-              className="w-full min-w-0 flex-1 bg-transparent px-4 py-3 text-sm text-[var(--paper)] outline-none placeholder:text-[rgba(245,243,238,0.3)] sm:px-5"
+              className="w-full min-w-0 flex-1 bg-transparent px-4 py-3 text-sm text-[var(--paper)] outline-none placeholder:text-[rgba(245,243,238,0.65)] sm:px-5"
             />
             <button
               onClick={submit}
@@ -52,7 +52,7 @@ export default function CTA() {
           </div>
         )}
 
-        <p className="mt-5 px-2 text-[10px] leading-4 text-[rgba(245,243,238,0.25)]">
+        <p className="mt-5 px-2 text-[10px] leading-4 text-[rgba(245,243,238,0.65)]">
           No spam · Early access is free · Leave anytime
         </p>
       </div>

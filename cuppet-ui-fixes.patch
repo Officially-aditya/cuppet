@@ -1,0 +1,460 @@
+diff --git a/app/layout.tsx b/app/layout.tsx
+index ac30f82..6199046 100644
+--- a/app/layout.tsx
++++ b/app/layout.tsx
+@@ -1,9 +1,24 @@
+-/* eslint-disable @next/next/no-page-custom-font */
+ import type { Metadata, Viewport } from 'next'
+ import type { ReactNode } from 'react'
++import { DM_Sans, Instrument_Serif } from 'next/font/google'
+ import { SITE_URL } from '@/lib/metadata'
+ import '../src/index.css'
+ 
++const dmSans = DM_Sans({
++  subsets: ['latin'],
++  weight: ['400', '500', '600', '700'],
++  display: 'swap',
++  variable: '--font-body',
++})
++
++const instrumentSerif = Instrument_Serif({
++  subsets: ['latin'],
++  weight: '400',
++  style: ['normal', 'italic'],
++  display: 'swap',
++  variable: '--font-display',
++})
++
+ export const metadata: Metadata = {
+   metadataBase: new URL(SITE_URL),
+   title: 'Cuppet',
+@@ -11,6 +26,7 @@ export const metadata: Metadata = {
+     'Create persistent agents in one sentence. Cuppet works across your connected accounts, keeps the schedule, and sends the result to your inbox.',
+   icons: {
+     icon: '/cuppet-icon-full-color.svg',
++    apple: '/apple-touch-icon.png',
+   },
+   openGraph: {
+     title: 'Cuppet',
+@@ -45,19 +61,12 @@ export const viewport: Viewport = {
+   width: 'device-width',
+   initialScale: 1,
+   themeColor: '#F5F3EE',
++  viewportFit: 'cover',
+ }
+ 
+ export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+   return (
+-    <html lang="en">
+-      <head>
+-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+-        <link
+-          href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&display=swap"
+-          rel="stylesheet"
+-        />
+-      </head>
++    <html lang="en" className={`${dmSans.variable} ${instrumentSerif.variable}`}>
+       <body>{children}</body>
+     </html>
+   )
+diff --git a/design.md b/design.md
+index 3a560ae..15b278a 100644
+--- a/design.md
++++ b/design.md
+@@ -44,7 +44,7 @@ No mid-render hex improvisation in new work — use tokens or Tailwind `brand` s
+ 
+ | Role | Face | Notes |
+ | --- | --- | --- |
+-| Display | Instrument Serif | Roman only. No italic headers. |
++| Display | Instrument Serif | Roman only. No italic headers, with one sanctioned exception: the Hero subhead ("You get a message.") — do not add more. |
+ | Body | DM Sans | 400–600 for UI |
+ | Mono meta | `ui-monospace` | Optional, rare — prefer plain captions |
+ 
+@@ -82,7 +82,7 @@ Declarative. Outcome-first. No invented metrics, logos, or “trusted by N teams
+ 
+ - AI purple / pink / cyan default palettes
+ - Gradient text, aurora blobs, glassmorphism stacks
+-- Italic display headers
++- Italic display headers (beyond the one Hero exception noted above)
+ - Fake browser / phone chrome with traffic lights
+ - Emoji as icons (use Lucide)
+ - Fabricated social proof
+diff --git a/public/apple-touch-icon.png b/public/apple-touch-icon.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..9ec45f0fd4047398355ee27604e1ca0d30d0faa8
+GIT binary patch
+literal 5872
+zcmd^D_ct4E)JJR*dsL7bHQFL}i4kJ9wOUnMR1tgCR>X)>qpC{Hpjy;kHDabkD~eXB
+zy(%`bYV-R33-2%Q5AP56x#!&T+|P5*=YGz4&iTX}8|nh-dFaW=$bkBKS`V&r{eMAA
+zeRZl1P|I8;I&VD-KQc1F%6~!L5c<H4jEu8TUrWO@C}%U*+0=A-0<(A7ujKL}m)qfW
+zn*W6IvQc4;v6cfYi_KvSbz80&*!I{2{z~$Zv9!p)D4Puyha}Y}#d;7VKz7g7aQFH8
+z#psMIp3un%NFX>3?k!#bZv7ysjD;?T&jb#_q@-`qu>OwJe@`uCaRPi*LY){XLfc1s
+z#}^e9nHB~V^L>G(6HdOWp#-4+)%0=H>`Gcgl&rdNHp+TtZY4R5PGMU>0<R#7B3=kf
+zM`1~u$eVQ?$y!CO4Puc)e_<J-B$uGn0U0nu<HsTe<7l(s3$#~2oD@QFBD9%b+~BDQ
+zN`vb@lyVwy26QTdjq?72Jho3DO61iYimdC{*v`HJItq~;9^=2v8f<#J<Oa+`n#jLb
+zsA)m}2jgX9=3I_Fpp|IO1Ye{SdjfBk=2^%hZ@ARm&R<|>i5d1QV$`K5ja>V8B9u~(
+zW;gWCEOGosYq#ibFLhd3{~ZeXdgSq3C44ZUbK6ab<Yp$9m#0KFI{I`+B=ru(iN*D!
+zh9IGED=>OiMu;?<=zW&OpDe2Ff@JbyG5wCNsqQN{NZ8r`SVRrI%;HS`SZa^_W{*5o
+zK-{Qm2*O{nGyRY@Po*jT@&ma0O!x+)Q4n@4Ml+os5HQc4SsUB=Ai>Wk6|v6s-XK|Y
+z)g;K3k@()YgcVU>%@_5r@ODYrmK84eYTXL!KeNXc#F=~(L|jowGgqXUa15LU64iKQ
+zES9`M?v~DGes|}#r0>cPIAn5q{(BG7GlfYb)EYWrMpfkR2yNOA67#gF2@=xhCHG*D
+z0&_76=_o=!_fVs)SYqCCXv`@rA+$rss`tAE<F-th({U5mr5IQc0KaVMOoyl;R=yX+
+z6?orcZS3a0N%cRcmx^yKN@-C-+9pn-+<%vTK>b3Xd)F0psS3p(NCaz<{e7ozJazeX
+zVZhN$jADX&C{)2eo|}l|goBvi4nbr*-4w=<wG^U_Re@{e=b*HA9PyC~)cZ!gNy|&-
+z{<aEqewjQ(jB&(B+)<I_AIL#X>fBwU_`-1ly%rn{XgRCgnU~U`@k`?;Bw1!6&WD)`
+zqnjoBm>SUGC3GYN!dBtUZw^kcJ84a{D2G@RxgrVi?!P2wdMEzBArgHd(6OV_!ihny
+zM;ho?T-)db{vZnS>A_oV4Pw0;BxhD4TzzEsI?YjmC1B6N&d&7s2>X4K=C{uds`dHw
+zf@hDgm@kSg)&*ucRWv^+OyGG1!&{5*X~bqIephWXu`;LCexCGI0LjWq?okLmTebU)
+zhva7<l9nAM2r7L&$V$?_PIH_he{(;nPm0!{_iiWqekYp{)^6(V^5@B{!srmyvumB@
+zRLyC!ft?#7c>I!#ia9a1?DscRXwcvSsF%8_ub@@j(9dZ>78pSd?GH2l*6J&o30dn3
+zoBhpjXoK?})W)<(SQRYrNPwupSV8R7?fxIz`EEz+krn{o&rn$CLS>pxmvob{FQ_<_
+zp`g6={-E70x)n8xO^@ZlXV)&)LX^&~{dJUuW+(;E6SDkEf=INxn2;t3M$OZAODG9o
+z<U)p^7<i=!naF!Gjy5w>T{|ZAMo;k(EMFZU+dtCyt$x2h)f)VHv7yT5n2L>8)5kZL
+zYr?3t@ccc)gyEf{208Z4z()A*{h@`+P-j7QZICRLtNFFkWbWs3XR6-vF~?!1^qw{?
+z!%O~5?D-s#0a<J>8Xroc)aMf$7Y$J`;)~JOH|COW>$thFPi#XX%hJ`>`)F74DvmyM
+zpS43Sa#Ve!g+Y%Et)a&)!4{{`83FdiUdlxzCXSzQZ#d)`T@(IgC*KLD1Pxc=(ww08
+z@&Y#K8E^S?OO?&_IE9DUw?#B3&yHHxAh8UmMu_p5^L9VeKh%j3wkW9{N{9I|a+F#j
+z&0gwP<xHmA@VyJKA!`+gLFlqZyO*@3q!Zl4|J%(teTs?u=!uBtnbY|cn(+as)GP^v
+zZ{E}$>Ny~2@Ns=CK{qn>+&P82+iiY`J|+nwG7n4bJtt(jcBktEX5|@@U{0F08;o1N
+zYHto4Icbt2Ipa+$d`Bp$RQ5=L_c){S19-{DruLYAm9a}?%1B##FH3DiQ(~R(?;!Bx
+z{v)XQX$uJPi3Gv#`m8)S3FchrbIK^^o}G-Tuqz7hmy_csQ3O7}^=9B_`+_@MxgOU}
+zuFGW8y}I~#*x2f@+pbFTMzfo(g6vs(@KI5H3HLx!TSRBanZ35|6n8JcgX=|20J&I#
+z?FY>9oTl8i9X2|+N{vuA)P!dyo<Q0)r-_%?t=7_#>HQlM{r4nh@La{@baGPZQEb?N
+z69pPi!}V9`;mjYC?KqIz>tnCCr$!g&x7)L&?)rT$tUMWqC@Y7aINNiNw8%2;nOjAK
+z$#>Dnx5{tfQU(WHGqeAd*uQ0f?roK0nl%7^=Z7i;yF$-j>?54#-~$*J;<w1ar)Zkn
+zLzX@UNq=xV!o-35_;Q!hOjQXE@)_+v#>P=UWfg~}j?R)6C39qXr1$N^=ZHyuE@0zh
+z(lKOV_T*gJW@@OZF1kXU*Zu4jc%e*@(iJ&V!L)b9plnR@?Fbn|kwop_uBRiOIf+@o
+zw4pG`{)M(s79JAZ?O-LG%1q0H4LdrPv+BYZX{Q_k_ORZT!kCPxZv`B|I+Vdoo`=&0
+zcg5o;l`&mDJb?k#2Y7C<-TeTP&hcBSECKK2F6KWa`PuSN=i|igxs=)7Nd(Oz<dQeR
+z!RKFzg*r<LgJ?n9n)A!UimDseunh|~?^3Skc8$7T5E!*E9vs%WG`O|~=T=a<$*>Kw
+z9Vf%rVck5v91)%JI2jFNfKOgY53(6;>gC)f;Qe-3pxSnkV42zA%Y8ss#vqCfnGPCp
+z_lqgBu~byo2cc|L-iHRfebTkTn1&1_Qxkni7Iw<yOzIz?=>|pDMATJQR|ANjSU&k2
+zj4W~eyI3Zemnt%rO^<i=a5=b#A=M|qi|&qMx3Zjlb&G7dDLTG<`|SWk5)X#$FxVEP
+z3jcBhx;J=n=$TLS*VEq_uZ4#!f15rMk}u`1`%s)oW%cPRLv4+WYb*cUTEwT)_mqm7
+zPkfGzOUDtZ%O>~yilEGEOwkif(oXd}s8$o1a?7o!0lGyv?^<TreRQ7U>UI#$5a{=4
+z%iNS`5LsxZ9QZ<y2USsNjRQbZfT|cvyL%l2I<8NofABU>EnZ;`53D=t#A#H(CR1K_
+zdA{M|)d^kD>EdmGfv1NvZ*HL8d`V(?($gDpEvh-~0s~$J1?8xNQv7-gZ}yTWt=0{h
+z&WTTPJFco7#FkT_Y!e!t1Tci`cQbA!RW`$_RELHBN1aMVcx*dtGHE|*Q_m<y!r!#D
+zPK}V=05w|uGh8B`^J0y{-_uMNC{K7a?lAPamiG2AQ<<=ONkBz(nLCmx!Hit4qpoY)
+z;xyP}L!Q7ubov+My}`iocT-V`(RKP=+;~6?&4y0Pq9)NDk=gO9`^-z8unxnkR04?K
+zZ-;t+yGMluzTu)V3!yA`oSQxocELhsJ~210a}ExMd}!)&do=PR{Q00X3%C^&tur<5
+z6hq^#78uumU-ZqA(O4HwpJDImNO}H9P0=v9EJVJRk23St*hGQ+c=4?v%VO&2%~{4r
+zOP#@-TE6f-&+qx%yD+Y{Yt#lVgFpPvPcCvZL;_)q6ZG)VPNx`{4lpo!(>pNncnVlM
+ze$N|rdP_iY9Z8&SW+N!65FD<MWjqS>d=-K9?W3Y-n>(P<n_GjhyVNULz4F~ZV)|cC
+zEo02>4*S2KZhFmqX8dSK`wL9%Z{>gDgYaHv*{bG<{Kt%K<m-uU<8AljoHrw~w@sB}
+zEMS!MCJq&<H)TCcQtbhbugjg`Zs{zb0CyU5kIUa*T_cI)b4<Fdk2g6DDNk9S+9tpB
+zg*9%TARci%ng&HTQv2Wm0U^*&OVru+p4E_cMq63V1*a3?Xg;8aXC<MY4OyuN0X{19
+z+KwdB^yP3+jND{#+90Q^#}#P&sae_5s+M~5y1vTpvU1P4DvOUgIMahFkZ7+!IiUln
+zA8_{MJ|Fk}!xR|1JT^OLxf{es2pj3E*4AzT-u$@{0`duvGmUGEoNkp|V*=sij3Igp
+zxk^&&P;0(DTkfG7akf(~Sn16_AyXS>xdXIDe}KPQ>U6mR8(AW4CCMsAW&VKt(7pA+
+zO<8x$`UX@8OD;t_cl^tRuk(}Ofo5NeZg$liYj|(%&uq(PKk$EaIRndRbZR9Z`bX`9
+zXnW*5$s(WF3%vSH)&Z&~4<9F<jBqsOE7`}s1aG}J(h6P^GZjtAp#1V0aH8GxIm7Bw
+zeQ|C(ZQ7B${#Oc^f{>?!R#^H`q;4b9sj|cnan$rtKu`=)V;}q{H!o&a{?~72XABVa
+z;s)@UU2|agzv1wRsy(MK0Wikh>u!!CxpDqfAsZ;8I}(X(@U8NZ5*5?*Gvp5cL9sB?
+zeqGC9GsNrPdZ?R+3u`jYACH|k%iUbgtCnR^Ozd)(odV7h5;dD53?IK@3-5f##x*=4
+zSfQ(10b0pxIh?w-ih6svt@~zcs>RKhyM8gHIT#yv=+1o>au-VB=++vUlikcP7SZmp
+z%VHtkSB4(tx-_ZyC0ZpQdq76)uYJ{e$h~#2SaA1S>K+C^CuTFnjNIyi-U%+3!exBq
+zhV$~ZfF>0o8cRYx{4x6tv@3>GE>f-Nl_Nb|J~vuGKh?Z89FTl|RL4wb`&3AQeM3>1
+zvCMvJCbu_vH)b*Fjus^`ATo#fVN7(WVNt<oOC_BURzB8v<PD--noEA`9@Ji&dB%<p
+zeaI#xEi6ut7}atxKjHbit%@m2=#_fUQX{Qx6Q>bAXfc@E${3BGmJYO})I6`P5QNB5
+zOoXwRN&r#g9RPW?$`XIOC|F)HH!B3wMK^DQy|}JK4Jq#FF0H05=BheetvQnEeTuh#
+zmBMqznH%3E?cochz{ynHyuxY878J7_3fU4~>wZr4s=;!*gLnID?2~HglC+{7jk}C$
+zdN$|+mzvC1x$y=xMs$Hn>Rv)04Cyz$oz>JQ-HI?8Q{KH=p^zq6Ma}mx0xjy7QggU}
+zB6*)>b4>7J+oJ;Ra`ee_;7C{=f2{~T1cl`<L!aRH(~p)Xw6wg&lWJ>e21jCA)?D%S
+z-Z8cTqfK>qJ*nI8I_O!@!DiVh*T_ATMZwX{Jq~mi9BeNR%`hk|2tOC(FkEzN1maZL
+zt?RZ(GUy87Rr4!-obTKG?4re!n^$~&;fL%;jKCMg$+bOcA#Bp}(}&6uem(hSl=DV4
+zU9Ket+Dry{7uOxBFdurJh%r6uxfzyuO%#4^Vy2?A{6WZZOvCh17DO;`Tcz|RIDdWW
+zSe-3;ZaL5J*jyhp?O~`;+(Z_L1GAN2LL8wpR*uxJZ7LqL{wiwU?{@Z%f7<z+^YqAl
+zCgJBx8?V)|n?fF~JVX}TC|Jtpy|1-5;@_mCvnz$XNi%S9Em53F0)1(Xx|fX(N%GW_
+zd%=J06DgH?Ev1f)<nzPzOi7U?;>W%2{cZ~PTgN6%p@<F(jdrDKh&VozMdpsAdF(>2
+zs5s=7ID)}j>^KJ}iANb$rqIJHW@U<?>Ll~1uGH`#MP>N%&xw_S{Euuw*j5NDRf+s?
+zk?ctR->R;U>oUv@{)$^OkC;;ZK4{xt>~phkE4wtD_9kL9_mr+!FP-~&Hps!$k1hYi
+z9`3}rBB3T3B>IzSTkANGsi9eA0Fhe&W;M__*VmA_Fw0E%yMVY8c2xd*`#*td8G^jy
+zaL5XhZ1EIHW}mp=A+m^Zj)cu5ljMO{%@wgN*(%fI{^6_`F2{w=>GeWyc@cp&;n*DO
+z-U!jdMgvqw@Ynr}&RdqokX0|%6(hvcAlMX_m+sMgu3iM9WMIifC{FSNmWZ}BJ_Fno
+z_C4Tadq*uiRQAEL-u4b)Yu`j{{Zq*PY`skfij{aT@7|8t72ouGtCS5qD}k+ADS42V
+zXN>U{J4d0mg1eIEwCS|2eZpnrbo+IBdHMFNE9_oeI1WKJY`7J`KV|os6v#%z^G8=h
+z@BU_0Vq|!DX8Nw>NQhE4We8^07k6!=I9hq?<EhGYHX@_mJO(lu*Ql_5p?QDQsFpsC
+zn7koR=jT|>g^4+u8@MioyLS86Oa5v2G#-&Lxc9*OMD6*!iV*gca|M%buVe42_o91v
+z&lxJ#35cdprOF6@xcF0N@4pFh4#VPFM0Tcce-W1a29xVxd&1~++;YF9i8^L;CQ6ZF
+zN?L3P5FN!>u+{gArzF&OWp}LJ-2K?1Wfst<CHW07ZTe<xHNK^|TjS-wLxp(hAp9&a
+zTF$tm6g`2|lgs!hZyeDqz!2z`cj-2L<$`!HQp}*&!!p(*LEc=A+w~n)B~{()?fpBL
+zeDDk@a7>#?z{m{?l2sQ5#WNtzYR-+tvgmYfDD5*uN5X6h`}=R<vE?#T3X`NoY1~#F
+zL2g83uO8$&S*~RrBIhkh>CBq(UPu?8#j%FV$&gf8A3i>ONk6(E?=@Cw4F2}32cxxZ
+zGh6hI?T~7Y@Lkvf%dr&bA3WaY)AV3CD&<NK2E?D_2Vj*E;_kC1sf$$R_~#+Rv0vgp
+zP`{?iieN51Sg=UzkZSV-RD~!n%1d$KMEt(4&zwkl@T|pZH<x&B%v$MRIV;o0`mH}K
+zn*+hN2i`w5JZ^`qEUg}PKTi!_fOZwLA5x^1BeH*SeR@2{5vYq>Ta9_#mIEx*buQ^G
+z7MU}1oPDmOdga)ivPNM(SmL(Y*{evqP~d^p#TM;kU2GoS7?h)pN(Z%_Pl=!T9JAsU
+zdJvl^Zq*o-&4h@rl#3&q=<|v)0=;88T<R8~3z8wBK-cgK!z-r{nBS$JBj$!ohhNI;
+zVbq%>*C-B{)tSN~{>6Nqg<L%uO5fE$6G*Dv`+OAL|C!p@$RNHK&(k853?xxG`h#+D
+z5nQ$bmL=#A7V2i0{Xsk5)z*t=!T)tKbd7v5$89vhBTwo`WY)OAZ1{t_&e9g?h|k_h
+z+<$9nFYETfL0$x!vAY>9P?r7J$nYM)jSkZUCdW##Euvn|7vKtyc{(D)y6uH!2ng_Y
+z3qURrrJ349ZUXq^i((Z$=3yTCe`00+@10g5`J)J5QE}adRFzLx7B-o_wxL#~CNk=O
+E02G(!Gynhq
+
+literal 0
+HcmV?d00001
+
+diff --git a/src/components/AgentBuilder.tsx b/src/components/AgentBuilder.tsx
+index e3fef19..7ef1ebb 100644
+--- a/src/components/AgentBuilder.tsx
++++ b/src/components/AgentBuilder.tsx
+@@ -135,11 +135,11 @@ export default function AgentBuilder() {
+   return (
+     <div className="mx-auto max-w-3xl rounded-[1.75rem] border border-black/10 bg-[var(--ink)] p-5 surface-elevated sm:p-8">
+       <div className="mb-7 flex items-center justify-between">
+-        <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[rgba(245,243,238,0.5)]">
++        <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[rgba(245,243,238,0.65)]">
+           <Wand2 className="h-3.5 w-3.5 text-[#9ac3a3]" />
+           Build an agent
+         </div>
+-        <span className="flex items-center gap-1.5 text-[10px] font-medium text-[rgba(245,243,238,0.35)]">
++        <span className="flex items-center gap-1.5 text-[10px] font-medium text-[rgba(245,243,238,0.6)]">
+           <span className="h-1.5 w-1.5 rounded-full bg-[#78b88a]" />
+           Live preview
+         </span>
+@@ -151,7 +151,7 @@ export default function AgentBuilder() {
+           onChange={(e) => setValue(e.target.value)}
+           onKeyDown={(e) => e.key === 'Enter' && create(value)}
+           placeholder="e.g. Summarize my emails every evening at 6pm"
+-          className="flex-1 rounded-xl border border-[rgba(245,243,238,0.1)] bg-[rgba(245,243,238,0.05)] px-5 py-3.5 text-sm text-[var(--paper)] outline-none placeholder:text-[rgba(245,243,238,0.3)] focus:border-[rgba(245,243,238,0.3)]"
++          className="flex-1 rounded-xl border border-[rgba(245,243,238,0.1)] bg-[rgba(245,243,238,0.05)] px-5 py-3.5 text-sm text-[var(--paper)] outline-none placeholder:text-[rgba(245,243,238,0.65)] focus:border-[rgba(245,243,238,0.3)]"
+         />
+         <button
+           onClick={() => create(value)}
+@@ -168,7 +168,7 @@ export default function AgentBuilder() {
+           <button
+             key={p}
+             onClick={() => create(p)}
+-            className="rounded-full border border-[rgba(245,243,238,0.1)] px-3.5 py-1.5 text-[11px] text-[rgba(245,243,238,0.45)] transition-colors hover:border-[rgba(245,243,238,0.2)] hover:text-[rgba(245,243,238,0.8)]"
++            className="rounded-full border border-[rgba(245,243,238,0.1)] px-3.5 py-1.5 text-[11px] text-[rgba(245,243,238,0.65)] transition-colors hover:border-[rgba(245,243,238,0.2)] hover:text-[rgba(245,243,238,0.8)]"
+           >
+             {p}
+           </button>
+@@ -177,7 +177,7 @@ export default function AgentBuilder() {
+ 
+       <div className="mt-6 min-h-[120px]">
+         {building && (
+-          <p className="flex items-center justify-center gap-3 py-10 text-sm text-[rgba(245,243,238,0.45)]">
++          <p className="flex items-center justify-center gap-3 py-10 text-sm text-[rgba(245,243,238,0.65)]">
+             <span className="flex gap-1.5">
+               {[0, 1, 2].map((d) => (
+                 <span
+@@ -208,7 +208,7 @@ export default function AgentBuilder() {
+                     Added to your chats
+                   </span>
+                 </div>
+-                <p className="mt-1 line-clamp-2 text-xs text-[rgba(245,243,238,0.45)]">
++                <p className="mt-1 line-clamp-2 text-xs text-[rgba(245,243,238,0.65)]">
+                   “{agent.task}”
+                 </p>
+                 <div className="mt-3 flex flex-wrap items-center gap-2">
+@@ -216,7 +216,7 @@ export default function AgentBuilder() {
+                     <CalendarClock className="h-3.5 w-3.5" />
+                     {agent.schedule}
+                   </span>
+-                  <code className="rounded-full border border-[rgba(245,243,238,0.1)] bg-black/20 px-3 py-1 font-mono text-[10.5px] text-[rgba(245,243,238,0.3)]">
++                  <code className="rounded-full border border-[rgba(245,243,238,0.1)] bg-black/20 px-3 py-1 font-mono text-[10.5px] text-[rgba(245,243,238,0.65)]">
+                     cron · {agent.cron}
+                   </code>
+                 </div>
+@@ -226,7 +226,7 @@ export default function AgentBuilder() {
+         )}
+ 
+         {!agent && !building && (
+-          <p className="py-10 text-center text-xs text-[rgba(245,243,238,0.25)]">
++          <p className="py-10 text-center text-xs text-[rgba(245,243,238,0.65)]">
+             Your new agent will appear here as a contact — ready to message you on schedule.
+           </p>
+         )}
+diff --git a/src/components/PhoneMockup.tsx b/src/components/PhoneMockup.tsx
+index b05176d..7d2129e 100644
+--- a/src/components/PhoneMockup.tsx
++++ b/src/components/PhoneMockup.tsx
+@@ -167,7 +167,7 @@ export default function PhoneMockup() {
+                     {m.text}
+                     <CheckCheck className="ml-1.5 inline h-3.5 w-3.5 align-middle text-[#b7d3bd]" />
+                   </p>
+-                  <p className="mt-0.5 text-right text-[9.5px] text-[rgba(245,243,238,0.45)]">
++                  <p className="mt-0.5 text-right text-[9.5px] text-[rgba(245,243,238,0.65)]">
+                     {m.time}
+                   </p>
+                 </div>
+diff --git a/src/components/SectionHeading.tsx b/src/components/SectionHeading.tsx
+index bcae88f..65c0cda 100644
+--- a/src/components/SectionHeading.tsx
++++ b/src/components/SectionHeading.tsx
+@@ -18,7 +18,7 @@ export default function SectionHeading({
+     <div className={`max-w-3xl ${align === 'center' ? 'mx-auto text-center' : ''}`}>
+       <p
+         className={`text-[11px] font-semibold uppercase tracking-[0.18em] ${
+-          dark ? 'text-[rgba(245,243,238,0.5)]' : 'text-[var(--ink-faint)]'
++          dark ? 'text-[rgba(245,243,238,0.65)]' : 'text-[var(--ink-faint)]'
+         }`}
+       >
+         {eyebrow}
+@@ -33,7 +33,7 @@ export default function SectionHeading({
+       {sub && (
+         <p
+           className={`mt-5 max-w-2xl text-[15px] leading-7 ${align === 'center' ? 'mx-auto' : ''} ${
+-            dark ? 'text-[rgba(245,243,238,0.55)]' : 'text-[var(--ink-soft)]'
++            dark ? 'text-[rgba(245,243,238,0.65)]' : 'text-[var(--ink-soft)]'
+           }`}
+         >
+           {sub}
+diff --git a/src/index.css b/src/index.css
+index 3cb1cda..55aea92 100644
+--- a/src/index.css
++++ b/src/index.css
+@@ -9,16 +9,15 @@
+     --paper-2: #ebe9e2;
+     --paper-3: #e0e9df;
+     --ink: #171a17;
+-    --ink-soft: rgba(23, 26, 23, 0.55);
+-    --ink-faint: rgba(23, 26, 23, 0.38);
++    --ink-soft: rgba(23, 26, 23, 0.66);
++    --ink-faint: rgba(23, 26, 23, 0.5);
+     --forest: #173c2a;
+     --forest-mid: #24583b;
+     --forest-deep: #153728;
+     --leaf: #43855b;
+     --rule: rgba(23, 26, 23, 0.1);
+     --rule-strong: rgba(23, 26, 23, 0.14);
+-    --font-display: 'Instrument Serif', ui-serif, Georgia, serif;
+-    --font-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
++    /* --font-display and --font-body are provided by next/font/google in app/layout.tsx */
+     --radius-control: 999px;
+     --radius-surface: 1.25rem;
+     --background: 43 26% 95%;
+diff --git a/src/sections/CTA.tsx b/src/sections/CTA.tsx
+index 5ce9308..5a3b9c8 100644
+--- a/src/sections/CTA.tsx
++++ b/src/sections/CTA.tsx
+@@ -14,13 +14,13 @@ export default function CTA() {
+   return (
+     <section id="cta" className="border-t border-[var(--rule)]">
+       <div className="relative mx-auto w-full max-w-6xl overflow-hidden bg-[var(--ink)] px-5 py-14 text-center sm:px-10 sm:py-24 md:my-8 md:rounded-[var(--radius-surface)]">
+-        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[rgba(245,243,238,0.4)]">
++        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[rgba(245,243,238,0.6)]">
+           Private beta
+         </p>
+         <h2 className="mx-auto mt-5 max-w-2xl font-display text-[clamp(2.25rem,11vw,4rem)] font-normal leading-[0.98] tracking-[-0.03em] text-[var(--paper)]">
+           Your next status update should arrive on its own.
+         </h2>
+-        <p className="mx-auto mt-6 max-w-md text-sm leading-6 text-[rgba(245,243,238,0.5)]">
++        <p className="mx-auto mt-6 max-w-md text-sm leading-6 text-[rgba(245,243,238,0.65)]">
+           Join the early group shaping Cuppet for iOS and Android. We’ll only write when there is
+           something useful to share.
+         </p>
+@@ -40,7 +40,7 @@ export default function CTA() {
+               onChange={(e) => setEmail(e.target.value)}
+               onKeyDown={(e) => e.key === 'Enter' && submit()}
+               placeholder="you@example.com"
+-              className="w-full min-w-0 flex-1 bg-transparent px-4 py-3 text-sm text-[var(--paper)] outline-none placeholder:text-[rgba(245,243,238,0.3)] sm:px-5"
++              className="w-full min-w-0 flex-1 bg-transparent px-4 py-3 text-sm text-[var(--paper)] outline-none placeholder:text-[rgba(245,243,238,0.65)] sm:px-5"
+             />
+             <button
+               onClick={submit}
+@@ -52,7 +52,7 @@ export default function CTA() {
+           </div>
+         )}
+ 
+-        <p className="mt-5 px-2 text-[10px] leading-4 text-[rgba(245,243,238,0.25)]">
++        <p className="mt-5 px-2 text-[10px] leading-4 text-[rgba(245,243,238,0.65)]">
+           No spam · Early access is free · Leave anytime
+         </p>
+       </div>
+diff --git a/src/sections/Connectors.tsx b/src/sections/Connectors.tsx
+index a9edc5d..59cd345 100644
+--- a/src/sections/Connectors.tsx
++++ b/src/sections/Connectors.tsx
+@@ -358,7 +358,7 @@ export default function Connectors() {
+                 tabIndex={blocked ? -1 : 0}
+                 aria-label="Close connector details"
+                 onClick={closeConnector}
+-                className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--paper)] text-[var(--ink-soft)] transition hover:bg-[var(--paper-3)] hover:text-[var(--ink)]"
++                className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--paper)] text-[var(--ink-soft)] transition hover:bg-[var(--paper-3)] hover:text-[var(--ink)]"
+               >
+                 <X className="h-4 w-4" aria-hidden="true" />
+               </button>
+@@ -419,7 +419,7 @@ export default function Connectors() {
+                     aria-pressed={active}
+                     title={connector.name}
+                     onClick={() => setActiveConnector(connector)}
+-                    className={`flex h-10 w-10 items-center justify-center rounded-full border bg-[var(--paper)] text-[21px] transition hover:-translate-y-0.5 hover:bg-[var(--paper-3)] ${
++                    className={`flex h-11 w-11 items-center justify-center rounded-full border bg-[var(--paper)] text-[21px] transition hover:-translate-y-0.5 hover:bg-[var(--paper-3)] ${
+                       active
+                         ? 'border-[var(--forest-mid)] shadow-[0_0_0_2px_rgba(36,88,59,0.12)]'
+                         : 'border-[var(--rule)]'
+@@ -479,7 +479,7 @@ export default function Connectors() {
+                 ref={browseCloseRef}
+                 aria-label="Close connector list"
+                 onClick={closeBrowse}
+-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--paper)] text-[var(--ink-soft)] transition hover:bg-[var(--paper-3)] hover:text-[var(--ink)]"
++                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--paper)] text-[var(--ink-soft)] transition hover:bg-[var(--paper-3)] hover:text-[var(--ink)]"
+               >
+                 <X className="h-4 w-4" aria-hidden="true" />
+               </button>
+diff --git a/src/sections/Navbar.tsx b/src/sections/Navbar.tsx
+index d1152e9..cbf6d68 100644
+--- a/src/sections/Navbar.tsx
++++ b/src/sections/Navbar.tsx
+@@ -67,7 +67,7 @@ export default function Navbar() {
+   }, [open])
+ 
+   return (
+-    <header className="fixed top-0 inset-x-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
++    <header className="fixed top-0 inset-x-0 z-50 px-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-4 sm:pt-[max(1rem,env(safe-area-inset-top))]">
+       <nav
+         className={`mx-auto flex h-14 max-w-5xl items-center justify-between gap-3 rounded-full px-3 sm:px-4 transition-[background-color,box-shadow,border-color] duration-300 ${
+           scrolled || open
+@@ -103,7 +103,7 @@ export default function Navbar() {
+           </Link>
+           <button
+             onClick={() => setOpen(!open)}
+-            className="md:hidden flex h-9 w-9 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--paper)]/70 text-[var(--ink)]"
++            className="md:hidden flex h-11 w-11 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--paper)]/70 text-[var(--ink)]"
+             aria-label="Toggle menu"
+             aria-expanded={open}
+             aria-controls="mobile-navigation"
+diff --git a/src/sections/Security.tsx b/src/sections/Security.tsx
+index 5b66f23..444862d 100644
+--- a/src/sections/Security.tsx
++++ b/src/sections/Security.tsx
+@@ -39,7 +39,7 @@ export default function Security() {
+               </div>
+               <div>
+                 <p className="text-xs font-semibold text-[rgba(245,243,238,0.85)]">Your device</p>
+-                <p className="mt-1 text-[10px] text-[rgba(245,243,238,0.35)]">No credentials stored</p>
++                <p className="mt-1 text-[10px] text-[rgba(245,243,238,0.6)]">No credentials stored</p>
+               </div>
+             </div>
+             <ArrowRight className="hidden h-4 w-4 text-[rgba(245,243,238,0.2)] sm:block" />
+@@ -52,7 +52,7 @@ export default function Security() {
+               </div>
+               <div>
+                 <p className="text-xs font-semibold text-[var(--paper)]">Encrypted vault</p>
+-                <p className="mt-1 text-[10px] text-[rgba(245,243,238,0.35)]">Tokens live here</p>
++                <p className="mt-1 text-[10px] text-[rgba(245,243,238,0.6)]">Tokens live here</p>
+               </div>
+             </div>
+             <ArrowRight className="hidden h-4 w-4 text-[rgba(245,243,238,0.2)] sm:block" />
+@@ -65,7 +65,7 @@ export default function Security() {
+               </div>
+               <div>
+                 <p className="text-xs font-semibold text-[rgba(245,243,238,0.85)]">Your accounts</p>
+-                <p className="mt-1 text-[10px] text-[rgba(245,243,238,0.35)]">Read-first access</p>
++                <p className="mt-1 text-[10px] text-[rgba(245,243,238,0.6)]">Read-first access</p>
+               </div>
+             </div>
+           </div>
+@@ -81,7 +81,7 @@ export default function Security() {
+             >
+               <item.Icon className="h-4 w-4 text-[#a8ceb2]" strokeWidth={1.5} />
+               <h3 className="mt-7 text-sm font-semibold text-[rgba(245,243,238,0.9)]">{item.title}</h3>
+-              <p className="mt-2 text-xs leading-5 text-[rgba(245,243,238,0.45)]">{item.body}</p>
++              <p className="mt-2 text-xs leading-5 text-[rgba(245,243,238,0.65)]">{item.body}</p>
+             </div>
+           ))}
+         </div>

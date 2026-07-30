@@ -39,7 +39,7 @@ export default function Security() {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[rgba(245,243,238,0.85)]">Your device</p>
-                <p className="mt-1 text-[10px] text-[rgba(245,243,238,0.35)]">No credentials stored</p>
+                <p className="mt-1 text-[10px] text-[rgba(245,243,238,0.6)]">No credentials stored</p>
               </div>
             </div>
             <ArrowRight className="hidden h-4 w-4 text-[rgba(245,243,238,0.2)] sm:block" />
@@ -52,7 +52,7 @@ export default function Security() {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[var(--paper)]">Encrypted vault</p>
-                <p className="mt-1 text-[10px] text-[rgba(245,243,238,0.35)]">Tokens live here</p>
+                <p className="mt-1 text-[10px] text-[rgba(245,243,238,0.6)]">Tokens live here</p>
               </div>
             </div>
             <ArrowRight className="hidden h-4 w-4 text-[rgba(245,243,238,0.2)] sm:block" />
@@ -65,7 +65,7 @@ export default function Security() {
               </div>
               <div>
                 <p className="text-xs font-semibold text-[rgba(245,243,238,0.85)]">Your accounts</p>
-                <p className="mt-1 text-[10px] text-[rgba(245,243,238,0.35)]">Read-first access</p>
+                <p className="mt-1 text-[10px] text-[rgba(245,243,238,0.6)]">Read-first access</p>
               </div>
             </div>
           </div>
@@ -81,7 +81,7 @@ export default function Security() {
             >
               <item.Icon className="h-4 w-4 text-[#a8ceb2]" strokeWidth={1.5} />
               <h3 className="mt-7 text-sm font-semibold text-[rgba(245,243,238,0.9)]">{item.title}</h3>
-              <p className="mt-2 text-xs leading-5 text-[rgba(245,243,238,0.45)]">{item.body}</p>
+              <p className="mt-2 text-xs leading-5 text-[rgba(245,243,238,0.65)]">{item.body}</p>
             </div>
           ))}
         </div>

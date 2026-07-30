@@ -167,7 +167,7 @@ export default function PhoneMockup() {
                     {m.text}
                     <CheckCheck className="ml-1.5 inline h-3.5 w-3.5 align-middle text-[#b7d3bd]" />
                   </p>
-                  <p className="mt-0.5 text-right text-[9.5px] text-[rgba(245,243,238,0.45)]">
+                  <p className="mt-0.5 text-right text-[9.5px] text-[rgba(245,243,238,0.65)]">
                     {m.time}
                   </p>
                 </div>

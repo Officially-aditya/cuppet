@@ -9,16 +9,15 @@
     --paper-2: #ebe9e2;
     --paper-3: #e0e9df;
     --ink: #171a17;
-    --ink-soft: rgba(23, 26, 23, 0.55);
-    --ink-faint: rgba(23, 26, 23, 0.38);
+    --ink-soft: rgba(23, 26, 23, 0.66);
+    --ink-faint: rgba(23, 26, 23, 0.5);
     --forest: #173c2a;
     --forest-mid: #24583b;
     --forest-deep: #153728;
     --leaf: #43855b;
     --rule: rgba(23, 26, 23, 0.1);
     --rule-strong: rgba(23, 26, 23, 0.14);
-    --font-display: 'Instrument Serif', ui-serif, Georgia, serif;
-    --font-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+    /* --font-display and --font-body are provided by next/font/google in app/layout.tsx */
     --radius-control: 999px;
     --radius-surface: 1.25rem;
     --background: 43 26% 95%;

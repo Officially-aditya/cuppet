@@ -18,7 +18,7 @@ export default function SectionHeading({
     <div className={`max-w-3xl ${align === 'center' ? 'mx-auto text-center' : ''}`}>
       <p
         className={`text-[11px] font-semibold uppercase tracking-[0.18em] ${
-          dark ? 'text-[rgba(245,243,238,0.5)]' : 'text-[var(--ink-faint)]'
+          dark ? 'text-[rgba(245,243,238,0.65)]' : 'text-[var(--ink-faint)]'
         }`}
       >
         {eyebrow}
@@ -33,7 +33,7 @@ export default function SectionHeading({
       {sub && (
         <p
           className={`mt-5 max-w-2xl text-[15px] leading-7 ${align === 'center' ? 'mx-auto' : ''} ${
-            dark ? 'text-[rgba(245,243,238,0.55)]' : 'text-[var(--ink-soft)]'
+            dark ? 'text-[rgba(245,243,238,0.65)]' : 'text-[var(--ink-soft)]'
           }`}
         >
           {sub}

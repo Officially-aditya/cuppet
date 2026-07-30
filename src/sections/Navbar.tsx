@@ -67,7 +67,7 @@ export default function Navbar() {
   }, [open])
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
+    <header className="fixed top-0 inset-x-0 z-50 px-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-4 sm:pt-[max(1rem,env(safe-area-inset-top))]">
       <nav
         className={`mx-auto flex h-14 max-w-5xl items-center justify-between gap-3 rounded-full px-3 sm:px-4 transition-[background-color,box-shadow,border-color] duration-300 ${
           scrolled || open
@@ -103,7 +103,7 @@ export default function Navbar() {
           </Link>
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden flex h-9 w-9 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--paper)]/70 text-[var(--ink)]"
+            className="md:hidden flex h-11 w-11 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--paper)]/70 text-[var(--ink)]"
             aria-label="Toggle menu"
             aria-expanded={open}
             aria-controls="mobile-navigation"

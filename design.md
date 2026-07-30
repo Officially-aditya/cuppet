@@ -44,7 +44,7 @@ No mid-render hex improvisation in new work — use tokens or Tailwind `brand` s
 
 | Role | Face | Notes |
 | --- | --- | --- |
-| Display | Instrument Serif | Roman only. No italic headers. |
+| Display | Instrument Serif | Roman only. No italic headers, with one sanctioned exception: the Hero subhead ("You get a message.") — do not add more. |
 | Body | DM Sans | 400–600 for UI |
 | Mono meta | `ui-monospace` | Optional, rare — prefer plain captions |
 
@@ -82,7 +82,7 @@ Declarative. Outcome-first. No invented metrics, logos, or “trusted by N teams
 
 - AI purple / pink / cyan default palettes
 - Gradient text, aurora blobs, glassmorphism stacks
-- Italic display headers
+- Italic display headers (beyond the one Hero exception noted above)
 - Fake browser / phone chrome with traffic lights
 - Emoji as icons (use Lucide)
 - Fabricated social proof

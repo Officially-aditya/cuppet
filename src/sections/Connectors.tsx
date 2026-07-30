@@ -358,7 +358,7 @@ export default function Connectors() {
                 tabIndex={blocked ? -1 : 0}
                 aria-label="Close connector details"
                 onClick={closeConnector}
-                className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--paper)] text-[var(--ink-soft)] transition hover:bg-[var(--paper-3)] hover:text-[var(--ink)]"
+                className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--paper)] text-[var(--ink-soft)] transition hover:bg-[var(--paper-3)] hover:text-[var(--ink)]"
               >
                 <X className="h-4 w-4" aria-hidden="true" />
               </button>
@@ -419,7 +419,7 @@ export default function Connectors() {
                     aria-pressed={active}
                     title={connector.name}
                     onClick={() => setActiveConnector(connector)}
-                    className={`flex h-10 w-10 items-center justify-center rounded-full border bg-[var(--paper)] text-[21px] transition hover:-translate-y-0.5 hover:bg-[var(--paper-3)] ${
+                    className={`flex h-11 w-11 items-center justify-center rounded-full border bg-[var(--paper)] text-[21px] transition hover:-translate-y-0.5 hover:bg-[var(--paper-3)] ${
                       active
                         ? 'border-[var(--forest-mid)] shadow-[0_0_0_2px_rgba(36,88,59,0.12)]'
                         : 'border-[var(--rule)]'
@@ -479,7 +479,7 @@ export default function Connectors() {
                 ref={browseCloseRef}
                 aria-label="Close connector list"
                 onClick={closeBrowse}
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--paper)] text-[var(--ink-soft)] transition hover:bg-[var(--paper-3)] hover:text-[var(--ink)]"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--paper)] text-[var(--ink-soft)] transition hover:bg-[var(--paper-3)] hover:text-[var(--ink)]"
               >
                 <X className="h-4 w-4" aria-hidden="true" />
               </button>
