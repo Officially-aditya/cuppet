@@ -105,7 +105,23 @@ export default function PhoneMockup() {
 
   return (
     <div className="relative w-full max-w-[390px] select-none">
-      <div className="relative flex h-[600px] flex-col overflow-hidden rounded-[1.35rem] border border-[var(--rule-strong)] bg-[var(--paper)] surface-elevated">
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-3 -top-3 z-20 h-8 w-8 border-l border-t border-[var(--forest)]/45"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-3 -top-3 z-20 h-8 w-8 border-r border-t border-[var(--forest)]/45"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-3 -left-3 z-20 h-8 w-8 border-b border-l border-[var(--forest)]/45"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-3 -right-3 z-20 h-8 w-8 border-b border-r border-[var(--forest)]/45"
+      />
+      <div className="relative flex h-[600px] flex-col overflow-hidden border border-[var(--rule-strong)] bg-[var(--paper)] surface-elevated">
         <div className="z-10 flex items-center gap-2.5 border-b border-black/[0.08] bg-[#efede8] px-3 py-3.5">
           <ChevronLeft className="h-5 w-5 -ml-0.5 text-black/40" />
           <div className="relative">
