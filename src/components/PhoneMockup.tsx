@@ -107,19 +107,19 @@ export default function PhoneMockup() {
     <div className="relative w-full max-w-[390px] select-none">
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -left-3 -top-3 z-20 h-8 w-8 border-l border-t border-[var(--forest)]/70"
+        className="pointer-events-none absolute -left-3 -top-3 z-20 h-8 w-8 border-l border-t border-[var(--forest)]/85"
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -right-3 -top-3 z-20 h-8 w-8 border-r border-t border-[var(--forest)]/70"
+        className="pointer-events-none absolute -right-3 -top-3 z-20 h-8 w-8 border-r border-t border-[var(--forest)]/85"
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-3 -left-3 z-20 h-8 w-8 border-b border-l border-[var(--forest)]/70"
+        className="pointer-events-none absolute -bottom-3 -left-3 z-20 h-8 w-8 border-b border-l border-[var(--forest)]/85"
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-3 -right-3 z-20 h-8 w-8 border-b border-r border-[var(--forest)]/70"
+        className="pointer-events-none absolute -bottom-3 -right-3 z-20 h-8 w-8 border-b border-r border-[var(--forest)]/85"
       />
       <div className="relative flex h-[600px] flex-col overflow-hidden border border-[var(--rule-strong)] bg-[var(--paper)] surface-elevated">
         <div className="z-10 flex items-center gap-2.5 border-b border-black/[0.08] bg-[#efede8] px-3 py-3.5">
