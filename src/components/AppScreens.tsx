@@ -1,4 +1,6 @@
-import type { ReactNode } from 'react'
+'use client'
+
+import { useState, type ReactNode } from 'react'
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -17,7 +19,7 @@ import {
   Zap,
 } from 'lucide-react'
 import { FaSlack } from 'react-icons/fa'
-import { SiGmail, SiGoogledrive } from 'react-icons/si'
+import { SiGmail, SiGoogledrive, SiNotion } from 'react-icons/si'
 
 /* ---------- shared bits ---------- */
 
@@ -51,28 +53,40 @@ const SERVICES = [
     desc: 'Search the web without a user login',
     connected: true,
     iconBg: '#e7f0ea',
-    icon: <Globe size={16} color="#173c2a" />,
+    foreground: '#0f6b4d',
+    icon: <Globe size={16} />,
   },
   {
     name: 'Gmail',
     desc: 'Read approved Gmail context and prepare summaries',
     connected: false,
     iconBg: '#ffffff',
-    icon: <SiGmail size={15} color="#ea4335" />,
+    foreground: '#d93025',
+    icon: <SiGmail size={15} />,
   },
   {
     name: 'Slack',
     desc: 'Read selected channels and prepare updates',
     connected: false,
     iconBg: '#ffffff',
-    icon: <FaSlack size={14} color="#4a154b" />,
+    foreground: '#611f69',
+    icon: <FaSlack size={14} />,
   },
   {
     name: 'Google Drive',
     desc: 'Read selected files and summarize documents',
     connected: false,
     iconBg: '#ffffff',
-    icon: <SiGoogledrive size={15} color="#0f9d58" />,
+    foreground: '#34a853',
+    icon: <SiGoogledrive size={15} />,
+  },
+  {
+    name: 'Notion',
+    desc: 'Read selected workspace pages and summarize recent changes',
+    connected: false,
+    iconBg: '#ffffff',
+    foreground: '#171a17',
+    icon: <SiNotion size={15} />,
   },
 ]
 
@@ -100,7 +114,7 @@ export function ConnectScreen() {
                   className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl shadow-sm"
                   style={{ background: s.iconBg }}
                 >
-                  {s.icon}
+                  <span style={{ color: s.foreground }}>{s.icon}</span>
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-[12.5px] font-semibold text-[var(--ink)]">{s.name}</p>
@@ -279,12 +293,101 @@ function DetailCard({ icon, title, children }: { icon: ReactNode; title: string;
 /* ---------- Screen 3: News agent thread ---------- */
 
 const STORIES = [
-  { title: 'EU AI Act Transparency Rules Take Effect Today', tags: ['TOP STORY', 'TECHNOLOGY'] },
-  { title: 'Google Withdraws AI Tool After Misinformation Concerns', tags: ['TECHNOLOGY'] },
-  { title: 'Open-Source AI Advances Spark US Tech Tensions', tags: ['TECHNOLOGY'] },
+  {
+    title: 'EU AI Act Transparency Rules Take Effect Today',
+    tags: ['TOP STORY', 'TECHNOLOGY'],
+    detail:
+      "Starting August 2, 2026, the European Union's AI Act begins its first phase of formal enforcement. Organizations are now legally required to disclose when users are interacting with AI and must provide clear, machine-readable labeling for AI-generated synthetic content, including deepfakes.",
+    source: 'European Commission',
+  },
+  {
+    title: 'Google Withdraws AI Tool After Misinformation Concerns',
+    tags: ['TECHNOLOGY'],
+    detail:
+      'Google retracted a feature for Google Earth that allowed users to generate AI-based imagery of global locations. The company pulled the tool within 24 hours after critics demonstrated it could be used to create convincing, fraudulent visuals of sensitive sites, highlighting ongoing risks regarding AI-generated misinformation.',
+    source: 'News Writer',
+  },
+  {
+    title: 'Open-Source AI Advances Spark US Tech Tensions',
+    tags: ['TECHNOLOGY'],
+    detail:
+      "The emergence of powerful open-source AI models from China, such as Moonshot AI’s Kimi K3, is causing internal divisions within the U.S. tech sector and the White House. While some companies view these models as a competitive alternative to dominant proprietary labs, others warn of security risks, sparking debates over potential sanctions.",
+    source: 'News Writer',
+  },
 ]
 
+function StoryCard({
+  story,
+  isExpanded,
+  onToggle,
+  detailId,
+}: {
+  story: (typeof STORIES)[number]
+  isExpanded: boolean
+  onToggle: () => void
+  detailId: string
+}) {
+  return (
+    <div
+      className={`overflow-hidden rounded-xl border transition-colors ${
+        isExpanded
+          ? 'border-[var(--forest-mid)]/35 bg-[var(--paper)]'
+          : 'border-[var(--rule)] bg-[var(--paper)]'
+      }`}
+    >
+      <button
+        type="button"
+        aria-controls={detailId}
+        aria-expanded={isExpanded}
+        onClick={onToggle}
+        className="flex w-full items-start gap-2.5 p-2.5 text-left transition-colors hover:bg-[var(--paper-2)]"
+      >
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[var(--paper-2)] text-[var(--forest)]">
+          <FileText size={13} />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-[10.5px] font-semibold leading-4 text-[var(--ink)]">
+            {story.title}
+          </span>
+          <span className="mt-1.5 flex flex-wrap gap-1">
+            {story.tags.map((tag) => (
+              <Pill key={tag} tone={tag === 'TOP STORY' ? 'dark' : 'default'}>
+                {tag}
+              </Pill>
+            ))}
+          </span>
+        </span>
+        <ChevronDown
+          size={13}
+          className={`mt-1 shrink-0 text-[var(--ink-faint)] transition-transform duration-200 ${
+            isExpanded ? 'rotate-180' : ''
+          }`}
+          aria-hidden="true"
+        />
+      </button>
+
+      {isExpanded && (
+        <div id={detailId} className="border-t border-[var(--rule)] px-2.5 pb-2.5 pt-2.5">
+          <p className="text-[10.5px] leading-[1.55] text-[var(--ink-soft)]">{story.detail}</p>
+          <p className="mt-2.5 text-[9.5px] text-[var(--ink-soft)]">
+            Source:{' '}
+            <span className="font-medium text-[var(--forest-mid)] underline decoration-[var(--forest-mid)]/35 underline-offset-2">
+              {story.source}
+            </span>
+          </p>
+          <span className="mt-2 flex items-center gap-1 text-[10px] font-semibold text-[var(--forest-mid)]">
+            <ArrowUpRight size={11} aria-hidden="true" />
+            Explore more
+          </span>
+        </div>
+      )}
+    </div>
+  )
+}
+
 export function ThreadScreen() {
+  const [expandedStory, setExpandedStory] = useState<string | null>(null)
+
   return (
     <div className="flex h-full flex-col">
       <div className="flex items-center gap-2.5 border-b border-black/[0.08] bg-[#efede8] px-3.5 py-3">
@@ -326,23 +429,16 @@ export function ThreadScreen() {
         <div className="mt-3 rounded-2xl border border-[var(--rule-strong)] bg-[var(--paper)] p-3.5 surface-elevated">
           <p className="text-[11px] font-semibold text-[var(--ink)]">Detailed coverage</p>
           <div className="mt-2.5 flex flex-col gap-2">
-            {STORIES.map((s) => (
-              <div key={s.title} className="flex items-start gap-2.5 rounded-xl border border-[var(--rule)] p-2.5">
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[var(--paper-2)] text-[var(--forest)]">
-                  <FileText size={13} />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-[10.5px] font-semibold leading-4 text-[var(--ink)]">{s.title}</p>
-                  <div className="mt-1.5 flex flex-wrap gap-1">
-                    {s.tags.map((t) => (
-                      <Pill key={t} tone={t === 'TOP STORY' ? 'dark' : 'default'}>
-                        {t}
-                      </Pill>
-                    ))}
-                  </div>
-                </div>
-                <ChevronDown size={13} className="mt-1 shrink-0 text-[var(--ink-faint)]" />
-              </div>
+            {STORIES.map((story, index) => (
+              <StoryCard
+                key={story.title}
+                story={story}
+                isExpanded={expandedStory === story.title}
+                onToggle={() =>
+                  setExpandedStory((current) => (current === story.title ? null : story.title))
+                }
+                detailId={`story-detail-${index}`}
+              />
             ))}
           </div>
         </div>

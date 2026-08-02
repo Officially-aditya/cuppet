@@ -14,7 +14,7 @@ const CLAIMS = [
   {
     key: 'thread',
     title: 'Watch it deliver',
-    body: 'Every result arrives as a TL;DR up top, with full detail one tap away.',
+    body: 'News arrives with a TL;DR up top, with full detail one tap away.',
     Screen: ThreadScreen,
   },
   {
