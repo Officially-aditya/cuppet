@@ -18,8 +18,7 @@ import {
   SlidersHorizontal,
   Zap,
 } from 'lucide-react'
-import { FaSlack } from 'react-icons/fa'
-import { SiGmail, SiGoogledrive, SiNotion } from 'react-icons/si'
+import { SiNotion } from 'react-icons/si'
 
 /* ---------- shared bits ---------- */
 
@@ -45,13 +44,45 @@ function Pill({ tone = 'default', children }: { tone?: 'default' | 'dark'; child
   )
 }
 
+function GmailLogo() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-[19px] w-[19px]" aria-hidden="true">
+      <path fill="#EA4335" d="M2.5 5.5 12 12.8l9.5-7.3v2.8L12 15.5 2.5 8.3z" />
+      <path fill="#4285F4" d="M2.5 5.5A1.5 1.5 0 0 1 5 4.3l7 5.4 7-5.4a1.5 1.5 0 0 1 2.5 1.2v13h-3V8.5L12 13.9 5.5 8.5v10h-3z" />
+      <path fill="#34A853" d="M2.5 5.5v13h3v-10z" />
+      <path fill="#FBBC04" d="M18.5 8.5v10h3v-13z" />
+    </svg>
+  )
+}
+
+function SlackLogo() {
+  return (
+    <span className="relative block h-5 w-5" aria-hidden="true">
+      <span className="absolute left-0 top-[7px] h-1.5 w-2.5 rounded-full bg-[#E01E5A]" />
+      <span className="absolute left-[7px] top-0 h-2.5 w-1.5 rounded-full bg-[#36C5F0]" />
+      <span className="absolute right-0 top-[7px] h-1.5 w-2.5 rounded-full bg-[#2EB67D]" />
+      <span className="absolute bottom-0 left-[7px] h-2.5 w-1.5 rounded-full bg-[#ECB22E]" />
+    </span>
+  )
+}
+
+function GoogleDriveLogo() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-[19px] w-[19px]" aria-hidden="true">
+      <path fill="#0F9D58" d="M7.6 3.3h4.8l6.6 11.4h-4.8z" />
+      <path fill="#F4B400" d="M7.6 3.3 1.1 14.7h6.7l6.6-11.4z" />
+      <path fill="#4285F4" d="M1.1 14.7h6.7l3.6 6H4.6zM14.2 14.7h6.7l-3.5 6h-6.7z" />
+    </svg>
+  )
+}
+
 /* ---------- Screen 1: Connect your tools ---------- */
 
 const SERVICES = [
   {
     name: 'Web Search',
     desc: 'Search the web without a user login',
-    connected: true,
+    connected: false,
     iconBg: '#e7f0ea',
     foreground: '#0f6b4d',
     icon: <Globe size={16} />,
@@ -61,24 +92,24 @@ const SERVICES = [
     desc: 'Read approved Gmail context and prepare summaries',
     connected: false,
     iconBg: '#ffffff',
-    foreground: '#d93025',
-    icon: <SiGmail size={15} />,
+    foreground: '#173c2a',
+    icon: <GmailLogo />,
   },
   {
     name: 'Slack',
     desc: 'Read selected channels and prepare updates',
     connected: false,
     iconBg: '#ffffff',
-    foreground: '#611f69',
-    icon: <FaSlack size={14} />,
+    foreground: '#171a17',
+    icon: <SlackLogo />,
   },
   {
     name: 'Google Drive',
     desc: 'Read selected files and summarize documents',
     connected: false,
     iconBg: '#ffffff',
-    foreground: '#34a853',
-    icon: <SiGoogledrive size={15} />,
+    foreground: '#171a17',
+    icon: <GoogleDriveLogo />,
   },
   {
     name: 'Notion',
@@ -108,7 +139,7 @@ export function ConnectScreen() {
 
         <div className="mt-2.5 flex flex-col gap-2.5">
           {SERVICES.map((s) => (
-            <div key={s.name} className="rounded-2xl border border-[var(--rule-strong)] bg-[var(--paper)] p-3.5">
+            <div key={s.name} className="rounded-2xl border border-[var(--rule-strong)] bg-white p-3.5">
               <div className="flex items-start gap-3">
                 <div
                   className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl shadow-sm"
