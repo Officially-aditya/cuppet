@@ -76,7 +76,7 @@ export default function Walkthrough() {
         </div>
 
         <div className="min-w-0 flex justify-center lg:justify-end">
-          <div className="relative w-full max-w-[320px] select-none">
+          <div className="relative w-full max-w-[390px] select-none">
             <span
               aria-hidden="true"
               className="pointer-events-none absolute -left-3 -top-3 z-20 h-8 w-8 border-l border-t border-[var(--forest)]/70"
