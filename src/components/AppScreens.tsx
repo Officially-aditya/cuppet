@@ -82,7 +82,7 @@ const SERVICES = [
   {
     name: 'Web Search',
     desc: 'Search the web without a user login',
-    connected: false,
+    connected: true,
     iconBg: '#e7f0ea',
     foreground: '#0f6b4d',
     icon: <Globe size={16} />,
