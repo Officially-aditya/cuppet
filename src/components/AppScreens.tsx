@@ -56,7 +56,7 @@ const SERVICES = [
   {
     name: 'Gmail',
     desc: 'Read approved Gmail context and prepare summaries',
-    connected: true,
+    connected: false,
     iconBg: '#ffffff',
     icon: <SiGmail size={15} color="#ea4335" />,
   },

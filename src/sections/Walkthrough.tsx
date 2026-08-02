@@ -6,27 +6,27 @@ import { ConnectScreen, ConfirmScreen, ThreadScreen } from '../components/AppScr
 
 const CLAIMS = [
   {
-    key: 'connect',
-    title: 'Connect only what\u2019s needed',
-    body: 'Choose exactly which services an agent can use. Nothing is connected by default.',
-    Screen: ConnectScreen,
-  },
-  {
     key: 'confirm',
-    title: 'Describe it, watch it take shape',
+    title: 'Create an agent',
     body: 'One sentence becomes a structured, scheduled agent \u2014 reviewed before it ever runs.',
     Screen: ConfirmScreen,
   },
   {
     key: 'thread',
-    title: 'Skim the summary, or open any story',
+    title: 'Watch it deliver',
     body: 'Every result arrives as a TL;DR up top, with full detail one tap away.',
     Screen: ThreadScreen,
+  },
+  {
+    key: 'connect',
+    title: 'Connect only what\u2019s required',
+    body: 'Choose exactly which services an agent can use. Nothing is connected by default.',
+    Screen: ConnectScreen,
   },
 ] as const
 
 export default function Walkthrough() {
-  const [active, setActive] = useState<(typeof CLAIMS)[number]['key']>('connect')
+  const [active, setActive] = useState<(typeof CLAIMS)[number]['key']>('confirm')
   const activeClaim = CLAIMS.find((c) => c.key === active) ?? CLAIMS[0]
   const ActiveScreen = activeClaim.Screen
 
