@@ -18,7 +18,8 @@ import {
   SlidersHorizontal,
   Zap,
 } from 'lucide-react'
-import { SiNotion } from 'react-icons/si'
+import { FaSlack } from 'react-icons/fa'
+import { SiGmail, SiGoogledrive, SiNotion } from 'react-icons/si'
 
 /* ---------- shared bits ---------- */
 
@@ -44,38 +45,6 @@ function Pill({ tone = 'default', children }: { tone?: 'default' | 'dark'; child
   )
 }
 
-function GmailLogo() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-[19px] w-[19px]" aria-hidden="true">
-      <path fill="#EA4335" d="M2.5 5.5 12 12.8l9.5-7.3v2.8L12 15.5 2.5 8.3z" />
-      <path fill="#4285F4" d="M2.5 5.5A1.5 1.5 0 0 1 5 4.3l7 5.4 7-5.4a1.5 1.5 0 0 1 2.5 1.2v13h-3V8.5L12 13.9 5.5 8.5v10h-3z" />
-      <path fill="#34A853" d="M2.5 5.5v13h3v-10z" />
-      <path fill="#FBBC04" d="M18.5 8.5v10h3v-13z" />
-    </svg>
-  )
-}
-
-function SlackLogo() {
-  return (
-    <span className="relative block h-5 w-5" aria-hidden="true">
-      <span className="absolute left-0 top-[7px] h-1.5 w-2.5 rounded-full bg-[#E01E5A]" />
-      <span className="absolute left-[7px] top-0 h-2.5 w-1.5 rounded-full bg-[#36C5F0]" />
-      <span className="absolute right-0 top-[7px] h-1.5 w-2.5 rounded-full bg-[#2EB67D]" />
-      <span className="absolute bottom-0 left-[7px] h-2.5 w-1.5 rounded-full bg-[#ECB22E]" />
-    </span>
-  )
-}
-
-function GoogleDriveLogo() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-[19px] w-[19px]" aria-hidden="true">
-      <path fill="#0F9D58" d="M7.6 3.3h4.8l6.6 11.4h-4.8z" />
-      <path fill="#F4B400" d="M7.6 3.3 1.1 14.7h6.7l6.6-11.4z" />
-      <path fill="#4285F4" d="M1.1 14.7h6.7l3.6 6H4.6zM14.2 14.7h6.7l-3.5 6h-6.7z" />
-    </svg>
-  )
-}
-
 /* ---------- Screen 1: Connect your tools ---------- */
 
 const SERVICES = [
@@ -92,24 +61,24 @@ const SERVICES = [
     desc: 'Read approved Gmail context and prepare summaries',
     connected: false,
     iconBg: '#ffffff',
-    foreground: '#173c2a',
-    icon: <GmailLogo />,
+    foreground: '#ea4335',
+    icon: <SiGmail size={15} />,
   },
   {
     name: 'Slack',
     desc: 'Read selected channels and prepare updates',
     connected: false,
     iconBg: '#ffffff',
-    foreground: '#171a17',
-    icon: <SlackLogo />,
+    foreground: '#4a154b',
+    icon: <FaSlack size={14} />,
   },
   {
     name: 'Google Drive',
     desc: 'Read selected files and summarize documents',
     connected: false,
     iconBg: '#ffffff',
-    foreground: '#171a17',
-    icon: <GoogleDriveLogo />,
+    foreground: '#0f9d58',
+    icon: <SiGoogledrive size={15} />,
   },
   {
     name: 'Notion',
