@@ -150,11 +150,6 @@
   display: none;
 }
 
-.connector-loop-mask {
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
-}
-
 .connector-logo-loop {
   --connector-loop-gap: 32px;
   --connector-loop-logo-height: 28px;

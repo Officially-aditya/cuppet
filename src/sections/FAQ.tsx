@@ -32,6 +32,12 @@ const QUESTIONS = [
     answer:
       'You decide what each agent can access. Select its connected apps and review the requested permissions before approving the agent, so it only has access to the tools you choose.',
   },
+  {
+    n: '06',
+    question: "Do I need my company's approval to use this?",
+    answer:
+      "No. Cuppet connects to your own accounts individually — there's nothing for an IT team to configure or approve. If it's useful, bringing it to your team is a separate conversation for later, not a requirement to start.",
+  },
 ]
 
 export default function FAQ() {
@@ -41,7 +47,7 @@ export default function FAQ() {
         <SectionHeading
           eyebrow="FAQ"
           title="Common questions"
-          sub="Still have Questions? We've got you"
+          sub="Still have questions? We've got you."
           align="left"
         />
 

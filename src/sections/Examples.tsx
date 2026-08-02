@@ -1,4 +1,4 @@
-import { CalendarClock, GraduationCap, HardDrive, Inbox, Newspaper } from 'lucide-react'
+import { CalendarClock, Github, HardDrive, Inbox, Newspaper } from 'lucide-react'
 import SectionHeading from '../components/SectionHeading'
 
 const EXAMPLES = [
@@ -24,11 +24,11 @@ const EXAMPLES = [
     result: 'A change log without checking Drive.',
   },
   {
-    Icon: GraduationCap,
-    name: 'Study coach',
-    prompt: 'Build a plan for my JEE exam and check in each evening.',
-    schedule: 'Daily · 8:30 PM',
-    result: 'A living plan that adapts as you progress.',
+    Icon: Github,
+    name: 'Standup digest',
+    prompt: 'Summarize what shipped in GitHub and flag anything blocked, every weekday morning.',
+    schedule: 'Weekdays · 8:00 AM',
+    result: 'A living change log without opening the repo.',
   },
 ]
 

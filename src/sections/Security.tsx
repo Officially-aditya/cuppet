@@ -31,6 +31,11 @@ export default function Security() {
           tone="dark"
         />
 
+        <p className="mt-4 max-w-2xl text-sm leading-6 text-[rgba(245,243,238,0.65)]">
+          No procurement, no IT ticket, no admin approval. You connect your own accounts, on your
+          own call, and you can disconnect them the same way.
+        </p>
+
         <div className="mt-14 rounded-[var(--radius-surface)] border border-[rgba(245,243,238,0.14)] bg-[rgba(245,243,238,0.05)] p-6 sm:p-8">
           <div className="grid items-center gap-5 sm:grid-cols-[1fr_auto_1fr_auto_1fr]">
             <div className="flex items-center gap-4 sm:flex-col sm:text-center">

@@ -33,7 +33,6 @@ import {
   SiZendesk,
   SiZoom,
 } from 'react-icons/si'
-import LogoLoop from '../components/LogoLoop'
 import SectionHeading from '../components/SectionHeading'
 
 type Connector = {
@@ -243,14 +242,6 @@ const CONNECTORS = ENABLED_CONNECTOR_NAMES.map((name) => {
   return connector
 })
 
-const CONNECTOR_LOGOS = CONNECTORS.map(({ Icon, name, color }) => ({
-  node: (
-    <span className="inline-flex items-center justify-center" style={{ color }} title={name}>
-      <Icon aria-hidden="true" focusable="false" />
-    </span>
-  ),
-}))
-
 function ConnectorCard({
   connector,
   onOpen,
@@ -331,18 +322,6 @@ export default function Connectors() {
             sub="Connect the apps you already use. Agents get the context they need, so you spend less time moving between tabs."
             align="left"
           />
-
-          <div className="connector-loop-mask mt-10 h-16 overflow-hidden">
-            <LogoLoop
-              logos={CONNECTOR_LOGOS}
-              speed={64}
-              logoHeight={30}
-              gap={36}
-              hoverSpeed={0}
-              scaleOnHover
-              ariaLabel="Available app connectors"
-            />
-          </div>
         </div>
 
         <div className="min-w-0">
