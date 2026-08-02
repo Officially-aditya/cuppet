@@ -1,8 +1,7 @@
 import SiteLayout from '../components/SiteLayout'
 import Hero from '../sections/Hero'
 import Connectors from '../sections/Connectors'
-import HowItWorks from '../sections/HowItWorks'
-import Features from '../sections/Features'
+import Walkthrough from '../sections/Walkthrough'
 import Security from '../sections/Security'
 import Examples from '../sections/Examples'
 import FAQ from '../sections/FAQ'
@@ -14,8 +13,7 @@ export default function Home() {
       <main>
         <Hero />
         <Connectors />
-        <HowItWorks />
-        <Features />
+        <Walkthrough />
         <Security />
         <Examples />
         <FAQ />

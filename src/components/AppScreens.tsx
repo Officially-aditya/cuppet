@@ -1,0 +1,362 @@
+import type { ReactNode } from 'react'
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  ChevronDown,
+  Clock,
+  ClipboardList,
+  FileText,
+  Globe,
+  MessageCircle,
+  MoreVertical,
+  Plus,
+  Send,
+  Settings,
+  ShieldCheck,
+  SlidersHorizontal,
+  Zap,
+} from 'lucide-react'
+import { FaSlack } from 'react-icons/fa'
+import { SiGmail, SiGoogledrive } from 'react-icons/si'
+
+/* ---------- shared bits ---------- */
+
+function Eyebrow({ children }: { children: ReactNode }) {
+  return (
+    <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--forest-mid)]">
+      {children}
+    </p>
+  )
+}
+
+function Pill({ tone = 'default', children }: { tone?: 'default' | 'dark'; children: ReactNode }) {
+  return (
+    <span
+      className={`inline-flex items-center rounded-full px-2.5 py-1 text-[10.5px] font-medium ${
+        tone === 'dark'
+          ? 'bg-[var(--forest)] text-[var(--paper)]'
+          : 'bg-[var(--paper-3)] text-[var(--forest)]'
+      }`}
+    >
+      {children}
+    </span>
+  )
+}
+
+/* ---------- Screen 1: Connect your tools ---------- */
+
+const SERVICES = [
+  {
+    name: 'Web Search',
+    desc: 'Search the web without a user login',
+    connected: true,
+    iconBg: '#e7f0ea',
+    icon: <Globe size={16} color="#173c2a" />,
+  },
+  {
+    name: 'Gmail',
+    desc: 'Read approved Gmail context and prepare summaries',
+    connected: true,
+    iconBg: '#ffffff',
+    icon: <SiGmail size={15} color="#ea4335" />,
+  },
+  {
+    name: 'Slack',
+    desc: 'Read selected channels and prepare updates',
+    connected: false,
+    iconBg: '#ffffff',
+    icon: <FaSlack size={14} color="#4a154b" />,
+  },
+  {
+    name: 'Google Drive',
+    desc: 'Read selected files and summarize documents',
+    connected: false,
+    iconBg: '#ffffff',
+    icon: <SiGoogledrive size={15} color="#0f9d58" />,
+  },
+]
+
+export function ConnectScreen() {
+  return (
+    <div className="flex h-full flex-col">
+      <div className="flex-1 overflow-y-auto px-4 pb-3 pt-5">
+        <Eyebrow>Workspace setup</Eyebrow>
+        <h3 className="mt-1 text-[21px] font-semibold leading-tight text-[var(--ink)]">
+          Connect your tools
+        </h3>
+        <p className="mt-1 text-[11.5px] leading-5 text-[var(--ink-soft)]">
+          Choose which services Cuppet can connect to.
+        </p>
+
+        <div className="mt-5">
+          <Eyebrow>Available services</Eyebrow>
+        </div>
+
+        <div className="mt-2.5 flex flex-col gap-2.5">
+          {SERVICES.map((s) => (
+            <div key={s.name} className="rounded-2xl border border-[var(--rule-strong)] bg-[var(--paper)] p-3.5">
+              <div className="flex items-start gap-3">
+                <div
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl shadow-sm"
+                  style={{ background: s.iconBg }}
+                >
+                  {s.icon}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-[12.5px] font-semibold text-[var(--ink)]">{s.name}</p>
+                  <p className="mt-0.5 text-[10.5px] leading-4 text-[var(--ink-soft)]">{s.desc}</p>
+                </div>
+              </div>
+              <div className="mt-3 flex items-center justify-between border-t border-[var(--rule)] pt-2.5">
+                <span
+                  className={`flex items-center gap-1.5 text-[10px] font-semibold tracking-wide ${
+                    s.connected ? 'text-[var(--forest)]' : 'text-[var(--ink-faint)]'
+                  }`}
+                >
+                  <span
+                    className={`h-3 w-3 rounded-full border-[3px] ${
+                      s.connected ? 'border-[var(--forest)]' : 'border-[var(--ink-faint)]'
+                    }`}
+                  />
+                  {s.connected ? 'CONNECTED' : 'DISCONNECTED'}
+                </span>
+                <span
+                  className={`relative h-5 w-9 shrink-0 rounded-full transition-colors ${
+                    s.connected ? 'bg-[var(--forest)]' : 'bg-[var(--paper-3)]'
+                  }`}
+                >
+                  <span
+                    className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-all ${
+                      s.connected ? 'left-[18px]' : 'left-0.5'
+                    }`}
+                  />
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex items-center justify-around border-t border-[var(--rule)] bg-[var(--paper)] px-2 py-2.5">
+        <TabItem icon={<MessageCircle size={17} />} label="Inbox" />
+        <TabItem icon={<Globe size={17} />} label="Connectors" active />
+        <TabItem icon={<Settings size={17} />} label="Settings" />
+      </div>
+    </div>
+  )
+}
+
+function TabItem({ icon, label, active }: { icon: ReactNode; label: string; active?: boolean }) {
+  return (
+    <div
+      className={`flex flex-col items-center gap-1 px-3 py-1 text-[10px] font-medium ${
+        active ? 'text-[var(--forest)]' : 'text-[var(--ink-faint)]'
+      }`}
+    >
+      {icon}
+      {label}
+    </div>
+  )
+}
+
+/* ---------- Screen 2: Confirm your agent ---------- */
+
+export function ConfirmScreen() {
+  return (
+    <div className="flex h-full flex-col">
+      <div className="flex-1 overflow-y-auto px-4 pb-3 pt-5">
+        <Eyebrow>Final review</Eyebrow>
+        <h3 className="mt-1 text-[21px] font-semibold leading-tight text-[var(--ink)]">
+          Confirm your agent
+        </h3>
+        <p className="mt-1 text-[11.5px] leading-5 text-[var(--ink-soft)]">
+          Review what it will do, when it will run, and which services it needs.
+        </p>
+
+        <div className="mt-4 flex items-start gap-3 rounded-2xl border border-[var(--rule-strong)] bg-[var(--paper)] p-3.5">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[var(--paper-3)] text-[13px] font-semibold text-[var(--forest)]">
+            C
+          </div>
+          <div>
+            <p className="text-[12.5px] font-semibold text-[var(--ink)]">News agent</p>
+            <p className="mt-0.5 text-[10.5px] leading-4 text-[var(--ink-soft)]">
+              Create a News agent. Researches and ranks a balanced current-news briefing. Run it
+              every day at 6:00 AM.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-5">
+          <Eyebrow>Agent details</Eyebrow>
+        </div>
+
+        <div className="mt-2.5 flex flex-col gap-2.5">
+          <DetailCard icon={<ClipboardList size={16} />} title="What it does">
+            <p className="text-[11px] leading-4 text-[var(--ink-soft)]">
+              Researches and ranks a balanced current-news briefing.
+            </p>
+          </DetailCard>
+
+          <DetailCard icon={<Clock size={16} />} title="When it runs">
+            <p className="text-[11px] leading-4 text-[var(--ink-soft)]">Daily at 6:00 AM · Asia/Calcutta</p>
+          </DetailCard>
+
+          <DetailCard icon={<SlidersHorizontal size={16} />} title="Preferences">
+            <div className="flex flex-col gap-2 text-[11px]">
+              <div>
+                <p className="text-[var(--ink-faint)]">Topics</p>
+                <div className="mt-1">
+                  <Pill>top stories</Pill>
+                </div>
+              </div>
+              <div className="flex items-center justify-between border-t border-[var(--rule)] pt-2">
+                <span className="text-[var(--ink-faint)]">Geography</span>
+                <span className="font-medium text-[var(--ink)]">local and global</span>
+              </div>
+              <div className="border-t border-[var(--rule)] pt-2">
+                <p className="text-[var(--ink-faint)]">Categories</p>
+                <div className="mt-1.5 flex flex-wrap gap-1.5">
+                  {['World', 'Business', 'Technology', 'Policy', 'Science'].map((c) => (
+                    <Pill key={c}>{c}</Pill>
+                  ))}
+                </div>
+              </div>
+              <div className="flex items-center justify-between border-t border-[var(--rule)] pt-2">
+                <span className="text-[var(--ink-faint)]">Freshness</span>
+                <span className="font-medium text-[var(--ink)]">48 Hours</span>
+              </div>
+              <div className="flex items-center justify-between border-t border-[var(--rule)] pt-2">
+                <span className="text-[var(--ink-faint)]">Balance</span>
+                <span className="font-medium text-[var(--ink)]">Balanced</span>
+              </div>
+            </div>
+          </DetailCard>
+
+          <DetailCard icon={<ArrowUpRight size={16} />} title="Output layout">
+            <p className="text-[11px] leading-4 text-[var(--ink-soft)]">
+              A summarized brief of recent articles
+            </p>
+          </DetailCard>
+
+          <DetailCard icon={<ShieldCheck size={16} />} title="Connected tools required">
+            <Pill>🔍 Web search (no login needed)</Pill>
+          </DetailCard>
+        </div>
+      </div>
+
+      <div className="flex gap-2 border-t border-[var(--rule)] bg-[var(--paper)] px-4 py-3">
+        <button
+          type="button"
+          className="flex-1 rounded-full border border-[var(--rule-strong)] py-2.5 text-[12px] font-semibold text-[var(--ink)]"
+        >
+          Back
+        </button>
+        <button
+          type="button"
+          className="flex-1 rounded-full bg-[var(--forest)] py-2.5 text-[12px] font-semibold text-[var(--paper)]"
+        >
+          Create Agent
+        </button>
+      </div>
+    </div>
+  )
+}
+
+function DetailCard({ icon, title, children }: { icon: ReactNode; title: string; children: ReactNode }) {
+  return (
+    <div className="rounded-2xl border border-[var(--rule-strong)] bg-[var(--paper)] p-3.5">
+      <div className="flex items-center gap-3">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[var(--paper-2)] text-[var(--forest)]">
+          {icon}
+        </div>
+        <p className="text-[12px] font-semibold text-[var(--ink)]">{title}</p>
+      </div>
+      <div className="mt-2.5 pl-11">{children}</div>
+    </div>
+  )
+}
+
+/* ---------- Screen 3: News agent thread ---------- */
+
+const STORIES = [
+  { title: 'EU AI Act Transparency Rules Take Effect Today', tags: ['TOP STORY', 'TECHNOLOGY'] },
+  { title: 'Google Withdraws AI Tool After Misinformation Concerns', tags: ['TECHNOLOGY'] },
+  { title: 'Open-Source AI Advances Spark US Tech Tensions', tags: ['TECHNOLOGY'] },
+]
+
+export function ThreadScreen() {
+  return (
+    <div className="flex h-full flex-col">
+      <div className="flex items-center gap-2.5 border-b border-black/[0.08] bg-[#efede8] px-3.5 py-3">
+        <ArrowLeft size={15} className="text-[var(--ink)]" />
+        <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--paper-2)] text-[10px] font-semibold text-[var(--forest)]">
+          NA
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="text-[12px] font-semibold text-[var(--ink)]">News agent</p>
+          <p className="flex items-center gap-1 text-[9.5px] font-semibold tracking-wide text-[var(--forest-mid)]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--forest-mid)]" />
+            SCHEDULED AT 6AM
+          </p>
+        </div>
+        <MoreVertical size={15} className="text-[var(--ink-faint)]" />
+      </div>
+
+      <div className="flex-1 overflow-y-auto px-3.5 py-4">
+        <div className="mb-3 flex justify-center">
+          <span className="rounded-full bg-[var(--paper-2)] px-3 py-1 text-[9.5px] font-medium text-[var(--ink-soft)]">
+            TODAY
+          </span>
+        </div>
+
+        <div className="rounded-2xl border border-[var(--rule-strong)] bg-[var(--paper)] p-3.5 surface-elevated">
+          <p className="text-[12px] leading-5 text-[var(--ink)]">Here&rsquo;s your 6am tech &amp; AI news brief.</p>
+          <div className="mt-2.5 rounded-xl border border-[var(--rule)] bg-[var(--paper-2)] p-3">
+            <p className="flex items-center gap-1 text-[10px] font-semibold text-[var(--forest)]">
+              <Zap size={11} /> TL;DR
+            </p>
+            <ul className="mt-1.5 space-y-1.5 text-[10.5px] leading-4 text-[var(--ink-soft)]">
+              <li>The EU&rsquo;s AI Act begins formal enforcement today, centering on transparency requirements.</li>
+              <li>Google rolled back a new Earth AI feature after concerns about misuse.</li>
+              <li>Open-source AI models from China are creating friction in the US tech industry.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-3 rounded-2xl border border-[var(--rule-strong)] bg-[var(--paper)] p-3.5 surface-elevated">
+          <p className="text-[11px] font-semibold text-[var(--ink)]">Detailed coverage</p>
+          <div className="mt-2.5 flex flex-col gap-2">
+            {STORIES.map((s) => (
+              <div key={s.title} className="flex items-start gap-2.5 rounded-xl border border-[var(--rule)] p-2.5">
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[var(--paper-2)] text-[var(--forest)]">
+                  <FileText size={13} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-[10.5px] font-semibold leading-4 text-[var(--ink)]">{s.title}</p>
+                  <div className="mt-1.5 flex flex-wrap gap-1">
+                    {s.tags.map((t) => (
+                      <Pill key={t} tone={t === 'TOP STORY' ? 'dark' : 'default'}>
+                        {t}
+                      </Pill>
+                    ))}
+                  </div>
+                </div>
+                <ChevronDown size={13} className="mt-1 shrink-0 text-[var(--ink-faint)]" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-2 border-t border-[var(--rule)] bg-[var(--paper)] px-3.5 py-2.5">
+        <Plus size={16} className="shrink-0 text-[var(--ink-faint)]" />
+        <div className="flex-1 rounded-full bg-[var(--paper-2)] px-3 py-2 text-[11px] text-[var(--ink-faint)]">
+          Message agent
+        </div>
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--forest)] text-[var(--paper)]">
+          <Send size={13} />
+        </span>
+      </div>
+    </div>
+  )
+}
