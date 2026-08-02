@@ -32,22 +32,22 @@ export default function Walkthrough() {
 
   return (
     <section id="how" className="border-t border-[var(--rule)] bg-[var(--paper)] py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <SectionHeading
-          eyebrow="The product"
-          title="Inside an agent, start to finish."
-          sub="One phone, one thread \u2014 the same screens the app actually shows you."
-          align="left"
-        />
+      <div className="mx-auto grid max-w-6xl items-start gap-12 px-5 sm:px-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-16">
+        <div className="min-w-0">
+          <SectionHeading
+            eyebrow="The product"
+            title="Inside an agent, start to finish."
+            sub="One phone, one thread \u2014 the same screens the app actually shows you."
+            align="left"
+          />
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center lg:gap-16">
-          <div className="flex flex-col">
+          <div className="mt-8 flex flex-col">
             {CLAIMS.map((claim, i) => (
               <button
                 key={claim.key}
                 type="button"
                 onClick={() => setActive(claim.key)}
-                className={`flex items-start gap-4 border-t border-[var(--rule)] px-0 py-5 text-left transition-colors last:border-b ${
+                className={`flex items-start gap-4 border-t border-[var(--rule)] px-0 py-4 text-left transition-colors last:border-b ${
                   active === claim.key ? 'rounded-2xl border-transparent bg-[var(--paper-2)] px-5 -mx-5' : ''
                 }`}
               >
@@ -73,28 +73,28 @@ export default function Walkthrough() {
               </button>
             ))}
           </div>
+        </div>
 
-          <div className="flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[320px] select-none">
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -left-3 -top-3 z-20 h-8 w-8 border-l border-t border-[var(--forest)]/70"
-              />
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-3 -top-3 z-20 h-8 w-8 border-r border-t border-[var(--forest)]/70"
-              />
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -bottom-3 -left-3 z-20 h-8 w-8 border-b border-l border-[var(--forest)]/70"
-              />
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -bottom-3 -right-3 z-20 h-8 w-8 border-b border-r border-[var(--forest)]/70"
-              />
-              <div className="relative flex h-[600px] flex-col overflow-hidden border border-[var(--rule-strong)] bg-[var(--paper)] surface-elevated">
-                <ActiveScreen />
-              </div>
+        <div className="min-w-0 flex justify-center lg:justify-end">
+          <div className="relative w-full max-w-[320px] select-none">
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-3 -top-3 z-20 h-8 w-8 border-l border-t border-[var(--forest)]/70"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-3 -top-3 z-20 h-8 w-8 border-r border-t border-[var(--forest)]/70"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-3 -left-3 z-20 h-8 w-8 border-b border-l border-[var(--forest)]/70"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-3 -right-3 z-20 h-8 w-8 border-b border-r border-[var(--forest)]/70"
+            />
+            <div className="relative flex h-[600px] flex-col overflow-hidden border border-[var(--rule-strong)] bg-[var(--paper)] surface-elevated">
+              <ActiveScreen />
             </div>
           </div>
         </div>
