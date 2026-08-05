@@ -36,7 +36,7 @@ export default function Security() {
           own call, and you can disconnect them the same way.
         </p>
 
-        <div className="mt-10 grid border-y border-[rgba(245,243,238,0.14)] sm:grid-cols-3">
+        <div className="mt-14 grid border-y border-[rgba(245,243,238,0.14)] sm:grid-cols-3">
           {ITEMS.map((item, i) => (
             <div
               key={item.title}
