@@ -51,7 +51,7 @@ const SERVICES = [
   {
     name: 'Web Search',
     desc: 'Search the web without a user login',
-    connected: true,
+    defaultConnected: true,
     iconBg: '#e7f0ea',
     foreground: '#0f6b4d',
     icon: <Globe size={16} />,
@@ -59,7 +59,7 @@ const SERVICES = [
   {
     name: 'Gmail',
     desc: 'Read approved Gmail context and prepare summaries',
-    connected: false,
+    defaultConnected: false,
     iconBg: '#ffffff',
     foreground: '#ea4335',
     icon: <SiGmail size={15} />,
@@ -67,7 +67,7 @@ const SERVICES = [
   {
     name: 'Slack',
     desc: 'Read selected channels and prepare updates',
-    connected: false,
+    defaultConnected: false,
     iconBg: '#ffffff',
     foreground: '#4a154b',
     icon: <FaSlack size={14} />,
@@ -75,7 +75,7 @@ const SERVICES = [
   {
     name: 'Google Drive',
     desc: 'Read selected files and summarize documents',
-    connected: false,
+    defaultConnected: false,
     iconBg: '#ffffff',
     foreground: '#0f9d58',
     icon: <SiGoogledrive size={15} />,
@@ -83,7 +83,7 @@ const SERVICES = [
   {
     name: 'Notion',
     desc: 'Read selected workspace pages and summarize recent changes',
-    connected: false,
+    defaultConnected: false,
     iconBg: '#ffffff',
     foreground: '#171a17',
     icon: <SiNotion size={15} />,
@@ -91,6 +91,10 @@ const SERVICES = [
 ]
 
 export function ConnectScreen() {
+  const [connected, setConnected] = useState<Record<string, boolean>>(() =>
+    Object.fromEntries(SERVICES.map((s) => [s.name, s.defaultConnected])),
+  )
+
   return (
     <div className="flex h-full flex-col">
       <div className="flex-1 overflow-y-auto px-4 pb-3 pt-5">
@@ -107,47 +111,57 @@ export function ConnectScreen() {
         </div>
 
         <div className="mt-2.5 flex flex-col gap-2.5">
-          {SERVICES.map((s) => (
-            <div key={s.name} className="rounded-2xl border border-[var(--rule-strong)] bg-white p-3.5">
-              <div className="flex items-start gap-3">
-                <div
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl shadow-sm"
-                  style={{ background: s.iconBg }}
-                >
-                  <span style={{ color: s.foreground }}>{s.icon}</span>
+          {SERVICES.map((s) => {
+            const isConnected = connected[s.name]
+            return (
+              <div key={s.name} className="rounded-2xl border border-[var(--rule-strong)] bg-white p-3.5">
+                <div className="flex items-start gap-3">
+                  <div
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl shadow-sm"
+                    style={{ background: s.iconBg }}
+                  >
+                    <span style={{ color: s.foreground }}>{s.icon}</span>
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[12.5px] font-semibold text-[var(--ink)]">{s.name}</p>
+                    <p className="mt-0.5 text-[10.5px] leading-4 text-[var(--ink-soft)]">{s.desc}</p>
+                  </div>
                 </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-[12.5px] font-semibold text-[var(--ink)]">{s.name}</p>
-                  <p className="mt-0.5 text-[10.5px] leading-4 text-[var(--ink-soft)]">{s.desc}</p>
+                <div className="mt-3 flex items-center justify-between border-t border-[var(--rule)] pt-2.5">
+                  <span
+                    className={`flex items-center gap-1.5 text-[10px] font-semibold tracking-wide ${
+                      isConnected ? 'text-[var(--forest)]' : 'text-[var(--ink-faint)]'
+                    }`}
+                  >
+                    <span
+                      className={`h-3 w-3 rounded-full border-[3px] ${
+                        isConnected ? 'border-[var(--forest)]' : 'border-[var(--ink-faint)]'
+                      }`}
+                    />
+                    {isConnected ? 'CONNECTED' : 'DISCONNECTED'}
+                  </span>
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={isConnected}
+                    aria-label={`${isConnected ? 'Disconnect' : 'Connect'} ${s.name}`}
+                    onClick={() =>
+                      setConnected((prev) => ({ ...prev, [s.name]: !prev[s.name] }))
+                    }
+                    className={`relative h-5 w-9 shrink-0 rounded-full transition-colors ${
+                      isConnected ? 'bg-[var(--forest)]' : 'bg-[var(--paper-3)]'
+                    }`}
+                  >
+                    <span
+                      className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-all ${
+                        isConnected ? 'left-[18px]' : 'left-0.5'
+                      }`}
+                    />
+                  </button>
                 </div>
               </div>
-              <div className="mt-3 flex items-center justify-between border-t border-[var(--rule)] pt-2.5">
-                <span
-                  className={`flex items-center gap-1.5 text-[10px] font-semibold tracking-wide ${
-                    s.connected ? 'text-[var(--forest)]' : 'text-[var(--ink-faint)]'
-                  }`}
-                >
-                  <span
-                    className={`h-3 w-3 rounded-full border-[3px] ${
-                      s.connected ? 'border-[var(--forest)]' : 'border-[var(--ink-faint)]'
-                    }`}
-                  />
-                  {s.connected ? 'CONNECTED' : 'DISCONNECTED'}
-                </span>
-                <span
-                  className={`relative h-5 w-9 shrink-0 rounded-full transition-colors ${
-                    s.connected ? 'bg-[var(--forest)]' : 'bg-[var(--paper-3)]'
-                  }`}
-                >
-                  <span
-                    className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-all ${
-                      s.connected ? 'left-[18px]' : 'left-0.5'
-                    }`}
-                  />
-                </span>
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
 
