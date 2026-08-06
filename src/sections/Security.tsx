@@ -1,5 +1,8 @@
+'use client'
+
 import { Eye, Lock, Smartphone } from 'lucide-react'
 import SectionHeading from '../components/SectionHeading'
+import { useRevealOnScroll } from '../lib/useRevealOnScroll'
 
 const ITEMS = [
   {
@@ -20,6 +23,8 @@ const ITEMS = [
 ]
 
 export default function Security() {
+  const { ref: itemsRef, isVisible } = useRevealOnScroll<HTMLDivElement>()
+
   return (
     <section id="security" className="bg-[var(--forest-deep)] py-20 sm:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
@@ -36,11 +41,12 @@ export default function Security() {
           own call, and you can disconnect them the same way.
         </p>
 
-        <div className="mt-14 grid border-y border-[rgba(245,243,238,0.14)] sm:grid-cols-3">
+        <div ref={itemsRef} className="mt-14 grid border-y border-[rgba(245,243,238,0.14)] sm:grid-cols-3">
           {ITEMS.map((item, i) => (
             <div
               key={item.title}
-              className={`py-7 sm:px-7 ${
+              style={{ transitionDelay: `${i * 70}ms` }}
+              className={`reveal${isVisible ? ' is-visible' : ''} py-7 sm:px-7 ${
                 i > 0 ? 'border-t border-[rgba(245,243,238,0.14)] sm:border-l sm:border-t-0' : ''
               }`}
             >
