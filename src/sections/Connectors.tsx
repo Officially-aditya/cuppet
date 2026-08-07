@@ -34,7 +34,6 @@ import {
   SiZoom,
 } from 'react-icons/si'
 import SectionHeading from '../components/SectionHeading'
-import { useRevealOnScroll } from '../lib/useRevealOnScroll'
 
 type Connector = {
   name: string
@@ -247,37 +246,28 @@ function ConnectorCard({
   connector,
   onOpen,
   tabIndex,
-  revealed,
-  delay,
 }: {
   connector: Connector
   onOpen: (connector: Connector) => void
   tabIndex?: number
-  revealed?: boolean
-  delay?: number
 }) {
   return (
-    <div
-      style={delay !== undefined ? { transitionDelay: `${delay}ms` } : undefined}
-      className={delay !== undefined ? `reveal${revealed ? ' is-visible' : ''}` : undefined}
+    <button
+      type="button"
+      tabIndex={tabIndex}
+      onClick={() => onOpen(connector)}
+      className="group grid h-[82px] grid-cols-[auto_minmax(0,1fr)] items-center gap-3 rounded-2xl border border-[var(--rule)] bg-[var(--paper)]/85 p-4 text-left shadow-[0_14px_35px_-30px_rgba(12,25,17,0.5)] transition duration-200 hover:-translate-y-0.5 hover:border-[var(--rule-strong)] hover:bg-[#e0e9df] hover:shadow-[0_18px_35px_-26px_rgba(12,25,17,0.38)]"
     >
-      <button
-        type="button"
-        tabIndex={tabIndex}
-        onClick={() => onOpen(connector)}
-        className="group grid h-[82px] w-full grid-cols-[auto_minmax(0,1fr)] items-center gap-3 rounded-2xl border border-[var(--rule)] bg-[var(--paper)]/85 p-4 text-left shadow-[0_14px_35px_-30px_rgba(12,25,17,0.5)] transition duration-200 hover:-translate-y-0.5 hover:border-[var(--rule-strong)] hover:bg-[#e0e9df] hover:shadow-[0_18px_35px_-26px_rgba(12,25,17,0.38)]"
+      <span
+        className="flex h-9 w-9 items-center justify-center text-[28px] transition-transform duration-200 group-hover:scale-110"
+        style={{ color: connector.color }}
       >
-        <span
-          className="flex h-9 w-9 items-center justify-center text-[28px] transition-transform duration-200 group-hover:scale-110"
-          style={{ color: connector.color }}
-        >
-          <connector.Icon aria-hidden="true" focusable="false" />
-        </span>
-        <span className="text-[13px] font-semibold leading-5 tracking-[-0.01em] text-[var(--ink)]">
-          {connector.name}
-        </span>
-      </button>
-    </div>
+        <connector.Icon aria-hidden="true" focusable="false" />
+      </span>
+      <span className="text-[13px] font-semibold leading-5 tracking-[-0.01em] text-[var(--ink)]">
+        {connector.name}
+      </span>
+    </button>
   )
 }
 
@@ -287,7 +277,6 @@ export default function Connectors() {
   const detailCloseRef = useRef<HTMLButtonElement>(null)
   const browseCloseRef = useRef<HTMLButtonElement>(null)
   const exploreRef = useRef<HTMLButtonElement>(null)
-  const { ref: gridRef, isVisible: gridVisible } = useRevealOnScroll<HTMLDivElement>()
   const blocked = browseOpen
 
   useEffect(() => {
@@ -382,18 +371,15 @@ export default function Connectors() {
             </div>
           ) : (
             <div
-              ref={gridRef}
               className="grid grid-cols-2 gap-2.5 sm:gap-3"
               aria-hidden={blocked || undefined}
             >
-              {CONNECTORS.slice(0, 6).map((connector, i) => (
+              {CONNECTORS.slice(0, 6).map((connector) => (
                 <ConnectorCard
                   key={connector.name}
                   connector={connector}
                   onOpen={openConnector}
                   tabIndex={blocked ? -1 : 0}
-                  revealed={gridVisible}
-                  delay={i * 55}
                 />
               ))}
             </div>

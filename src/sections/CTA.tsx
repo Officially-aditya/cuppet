@@ -2,12 +2,10 @@
 
 import { useState } from 'react'
 import { ArrowRight, Check } from 'lucide-react'
-import { useRevealOnScroll } from '../lib/useRevealOnScroll'
 
 export default function CTA() {
   const [email, setEmail] = useState('')
   const [done, setDone] = useState(false)
-  const { ref: ctaRef, isVisible } = useRevealOnScroll<HTMLDivElement>()
 
   const submit = () => {
     if (/^\S+@\S+\.\S+$/.test(email)) setDone(true)
@@ -15,10 +13,7 @@ export default function CTA() {
 
   return (
     <section id="cta" className="border-t border-[var(--rule)]">
-      <div
-        ref={ctaRef}
-        className={`beta-geometry reveal-pop${isVisible ? ' is-visible' : ''} relative mx-auto w-full max-w-6xl overflow-hidden bg-[var(--ink)] px-5 py-14 text-center sm:px-10 sm:py-24 md:my-8 md:rounded-[var(--radius-surface)]`}
-      >
+      <div className="beta-geometry relative mx-auto w-full max-w-6xl overflow-hidden bg-[var(--ink)] px-5 py-14 text-center sm:px-10 sm:py-24 md:my-8 md:rounded-[var(--radius-surface)]">
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[rgba(245,243,238,0.6)]">
           Private beta
         </p>

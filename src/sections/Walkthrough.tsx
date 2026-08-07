@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import SectionHeading from '../components/SectionHeading'
 import { ConnectScreen, ConfirmScreen, ThreadScreen } from '../components/AppScreens'
-import { useRevealOnScroll } from '../lib/useRevealOnScroll'
 
 const CLAIMS = [
   {
@@ -30,8 +29,6 @@ export default function Walkthrough() {
   const [active, setActive] = useState<(typeof CLAIMS)[number]['key']>('confirm')
   const activeClaim = CLAIMS.find((c) => c.key === active) ?? CLAIMS[0]
   const ActiveScreen = activeClaim.Screen
-  const { ref: claimsRef, isVisible: claimsVisible } = useRevealOnScroll<HTMLDivElement>()
-  const { ref: phoneRef, isVisible: phoneVisible } = useRevealOnScroll<HTMLDivElement>()
 
   return (
     <section id="how" className="border-t border-[var(--rule)] bg-[var(--paper)] py-20 sm:py-28">
@@ -44,51 +41,42 @@ export default function Walkthrough() {
             align="left"
           />
 
-          <div ref={claimsRef} className="mt-8 flex flex-col">
+          <div className="mt-8 flex flex-col">
             {CLAIMS.map((claim, i) => (
-              <div
+              <button
                 key={claim.key}
-                style={{ transitionDelay: `${i * 70}ms` }}
-                className={`reveal${claimsVisible ? ' is-visible' : ''}`}
+                type="button"
+                onClick={() => setActive(claim.key)}
+                className={`flex items-start gap-4 border-t border-[var(--rule)] px-0 py-4 text-left transition-colors last:border-b ${
+                  active === claim.key ? 'rounded-2xl border-transparent bg-[var(--paper-2)] px-5 -mx-5' : ''
+                }`}
               >
-                <button
-                  type="button"
-                  onClick={() => setActive(claim.key)}
-                  className={`flex w-full items-start gap-4 border-t border-[var(--rule)] px-0 py-4 text-left transition-colors last:border-b ${
-                    active === claim.key ? 'rounded-2xl border-transparent bg-[var(--paper-2)] px-5 -mx-5' : ''
+                <span
+                  className={`w-7 shrink-0 font-display text-[19px] leading-none ${
+                    active === claim.key ? 'text-[var(--forest)]' : 'text-[var(--ink-faint)]'
                   }`}
                 >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span>
                   <span
-                    className={`w-7 shrink-0 font-display text-[19px] leading-none ${
-                      active === claim.key ? 'text-[var(--forest)]' : 'text-[var(--ink-faint)]'
+                    className={`block text-[15px] font-semibold ${
+                      active === claim.key ? 'text-[var(--forest)]' : 'text-[var(--ink)]'
                     }`}
                   >
-                    {String(i + 1).padStart(2, '0')}
+                    {claim.title}
                   </span>
-                  <span>
-                    <span
-                      className={`block text-[15px] font-semibold ${
-                        active === claim.key ? 'text-[var(--forest)]' : 'text-[var(--ink)]'
-                      }`}
-                    >
-                      {claim.title}
-                    </span>
-                    <span className="mt-1 block max-w-[42ch] text-[13.5px] leading-[1.55] text-[var(--ink-soft)]">
-                      {claim.body}
-                    </span>
+                  <span className="mt-1 block max-w-[42ch] text-[13.5px] leading-[1.55] text-[var(--ink-soft)]">
+                    {claim.body}
                   </span>
-                </button>
-              </div>
+                </span>
+              </button>
             ))}
           </div>
         </div>
 
         <div className="min-w-0 flex justify-center lg:justify-end">
-          <div
-            ref={phoneRef}
-            style={{ transitionDelay: '260ms' }}
-            className={`reveal-pop relative w-full max-w-[390px] select-none${phoneVisible ? ' is-visible' : ''}`}
-          >
+          <div className="relative w-full max-w-[390px] select-none">
             <span
               aria-hidden="true"
               className="pointer-events-none absolute -left-3 -top-3 z-20 h-8 w-8 border-l border-t border-[var(--forest)]/70"
