@@ -50,7 +50,7 @@ export default function Examples() {
 
         <div ref={rowsRef} className="mt-14 overflow-hidden rounded-[var(--radius-surface)] border border-[var(--rule)]">
           {EXAMPLES.map((ex, i) => (
-            <div key={ex.name} style={{ transitionDelay: `${i * 110}ms` }} className={`reveal${isVisible ? ' is-visible' : ''}`}>
+            <div key={ex.name} style={{ transitionDelay: `${i * 70}ms` }} className={`reveal${isVisible ? ' is-visible' : ''}`}>
               <article className="grid gap-4 border-b border-[var(--rule)] bg-[var(--paper)] px-5 py-6 last:border-b-0 transition-colors duration-200 hover:bg-[var(--paper-2)] sm:grid-cols-[180px_minmax(0,1fr)_170px] sm:items-center sm:gap-8 sm:px-7">
                 <div className="flex items-center gap-3">
                   <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--paper)]">

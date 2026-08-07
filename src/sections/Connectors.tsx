@@ -393,7 +393,7 @@ export default function Connectors() {
                   onOpen={openConnector}
                   tabIndex={blocked ? -1 : 0}
                   revealed={gridVisible}
-                  delay={i * 90}
+                  delay={i * 55}
                 />
               ))}
             </div>

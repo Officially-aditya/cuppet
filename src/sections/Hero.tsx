@@ -35,7 +35,7 @@ export default function Hero() {
           </h1>
 
           <p
-            style={step(140)}
+            style={step(90)}
             className={cls(
               'mx-auto mt-7 max-w-[34rem] text-[16px] leading-7 text-[var(--ink-soft)] sm:text-[17px] lg:mx-0',
             )}
@@ -45,7 +45,7 @@ export default function Hero() {
           </p>
 
           <div
-            style={step(260)}
+            style={step(170)}
             className={cls('mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start')}
           >
             <a href="#cta" className="btn-primary w-full sm:w-auto">
@@ -61,7 +61,7 @@ export default function Hero() {
           </div>
 
           <div
-            style={step(380)}
+            style={step(250)}
             className={cls(
               'mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[11px] font-medium text-[var(--ink-faint)] lg:justify-start',
             )}
@@ -82,7 +82,7 @@ export default function Hero() {
         </div>
 
         <figure className="flex w-full min-w-0 justify-center lg:justify-end">
-          <div style={step(480)} className={`${cls('reveal-pop')} w-full max-w-[390px]`}>
+          <div style={step(320)} className={`${cls('reveal-pop')} w-full max-w-[390px]`}>
             <PhoneMockup />
             <figcaption className="sr-only">
               Product demo: scheduled tech news agent delivering a morning digest in chat.

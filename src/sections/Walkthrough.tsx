@@ -48,7 +48,7 @@ export default function Walkthrough() {
             {CLAIMS.map((claim, i) => (
               <div
                 key={claim.key}
-                style={{ transitionDelay: `${i * 110}ms` }}
+                style={{ transitionDelay: `${i * 70}ms` }}
                 className={`reveal${claimsVisible ? ' is-visible' : ''}`}
               >
                 <button
@@ -86,7 +86,7 @@ export default function Walkthrough() {
         <div className="min-w-0 flex justify-center lg:justify-end">
           <div
             ref={phoneRef}
-            style={{ transitionDelay: '380ms' }}
+            style={{ transitionDelay: '260ms' }}
             className={`reveal-pop relative w-full max-w-[390px] select-none${phoneVisible ? ' is-visible' : ''}`}
           >
             <span

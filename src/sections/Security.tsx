@@ -45,7 +45,7 @@ export default function Security() {
           {ITEMS.map((item, i) => (
             <div
               key={item.title}
-              style={{ transitionDelay: `${i * 110}ms` }}
+              style={{ transitionDelay: `${i * 70}ms` }}
               className={`reveal${isVisible ? ' is-visible' : ''} py-7 sm:px-7 ${
                 i > 0 ? 'border-t border-[rgba(245,243,238,0.14)] sm:border-l sm:border-t-0' : ''
               }`}
