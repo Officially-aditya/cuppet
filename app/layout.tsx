@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
 import { DM_Sans, Instrument_Serif } from 'next/font/google'
 import { SITE_URL } from '@/lib/metadata'
+import ScrollTitleUnderlines from '@/components/ScrollTitleUnderlines'
 import '../src/index.css'
 
 const dmSans = DM_Sans({
@@ -67,7 +68,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" className={`${dmSans.variable} ${instrumentSerif.variable}`}>
-      <body>{children}</body>
+      <body>
+        <ScrollTitleUnderlines />
+        {children}
+      </body>
     </html>
   )
 }

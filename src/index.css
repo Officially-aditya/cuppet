@@ -376,6 +376,37 @@
   .connector-logo-loop__node {
     transition: none;
   }
+
+  .scroll-title::after {
+    transform: scaleX(1);
+    transition: none;
+  }
+}
+
+.scroll-title {
+  position: relative;
+}
+
+.scroll-title::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -0.2em;
+  left: 0;
+  height: max(2px, 0.07em);
+  border-radius: 999px;
+  background: var(--forest-mid);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-title[data-scroll-tone='dark']::after {
+  background: var(--paper-3);
+}
+
+.scroll-title-visible::after {
+  transform: scaleX(1);
 }
 
 .legal-copy > div:first-child p {

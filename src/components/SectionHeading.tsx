@@ -24,6 +24,7 @@ export default function SectionHeading({
         {eyebrow}
       </p>
       <h2
+        data-scroll-tone={dark ? 'dark' : undefined}
         className={`mt-4 font-display text-[2.4rem] font-normal leading-[0.98] tracking-[-0.03em] sm:text-[3.4rem] ${
           dark ? 'text-[var(--paper)]' : 'text-[var(--ink)]'
         }`}

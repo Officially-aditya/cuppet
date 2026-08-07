@@ -45,7 +45,12 @@ export default function Security() {
               }`}
             >
               <item.Icon className="h-4 w-4 text-[#a8ceb2]" strokeWidth={1.5} />
-              <h3 className="mt-7 text-sm font-semibold text-[rgba(245,243,238,0.9)]">{item.title}</h3>
+              <h3
+                data-scroll-tone="dark"
+                className="mt-7 text-sm font-semibold text-[rgba(245,243,238,0.9)]"
+              >
+                {item.title}
+              </h3>
               <p className="mt-2 text-xs leading-5 text-[rgba(245,243,238,0.65)]">{item.body}</p>
             </div>
           ))}
