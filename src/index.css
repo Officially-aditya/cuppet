@@ -377,36 +377,36 @@
     transition: none;
   }
 
-  .scroll-title::after {
-    transform: scaleX(1);
+  .scroll-title {
+    text-decoration-color: var(--forest-mid);
     transition: none;
+  }
+
+  .scroll-title[data-scroll-tone='dark'] {
+    text-decoration-color: var(--paper-3);
   }
 }
 
 .scroll-title {
-  position: relative;
+  text-decoration-line: underline;
+  text-decoration-thickness: max(2px, 0.07em);
+  text-decoration-color: transparent;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-underline-offset: 0.16em;
+  transition: text-decoration-color 650ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.scroll-title::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: -0.2em;
-  left: 0;
-  height: max(2px, 0.07em);
-  border-radius: 999px;
-  background: var(--forest-mid);
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+.scroll-title[data-scroll-tone='dark'] {
+  text-decoration-color: transparent;
 }
 
-.scroll-title[data-scroll-tone='dark']::after {
-  background: var(--paper-3);
+.scroll-title-visible {
+  text-decoration-color: var(--forest-mid);
 }
 
-.scroll-title-visible::after {
-  transform: scaleX(1);
+.scroll-title-visible[data-scroll-tone='dark'] {
+  text-decoration-color: var(--paper-3);
 }
 
 .legal-copy > div:first-child p {
