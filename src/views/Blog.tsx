@@ -21,7 +21,7 @@ export default function Blog() {
             </p>
             <div className="mt-5 grid items-end gap-8 lg:grid-cols-[1.15fr_0.85fr]">
               <h1 className="max-w-3xl font-display text-[3.5rem] font-normal leading-[0.92] tracking-[-0.04em] text-[var(--ink)] sm:text-[5.5rem]">
-                Ideas for quieter, more useful AI.
+                <span className="scroll-title-content">Ideas for quieter, more useful AI.</span>
               </h1>
               <p className="max-w-md pb-1 text-[15px] leading-7 text-[var(--ink-soft)] lg:ml-auto">
                 Notes on attention, connected work, product judgment, and building AI that knows
@@ -47,12 +47,14 @@ export default function Blog() {
                   <span>{featured.readingTime}</span>
                 </div>
                 <h2 className="mt-5 max-w-xl font-display text-[2.4rem] font-normal leading-[0.98] tracking-[-0.03em] text-[var(--ink)] sm:text-[3.1rem]">
-                  <Link
-                    href={`/blog/${featured.slug}`}
-                    className="transition-colors duration-200 hover:text-[var(--forest-mid)]"
-                  >
-                    {featured.title}
-                  </Link>
+                  <span className="scroll-title-content">
+                    <Link
+                      href={`/blog/${featured.slug}`}
+                      className="transition-colors duration-200 hover:text-[var(--forest-mid)]"
+                    >
+                      {featured.title}
+                    </Link>
+                  </span>
                 </h2>
                 <p className="mt-5 max-w-lg text-[15px] leading-7 text-[var(--ink-soft)]">
                   {featured.excerpt}
@@ -89,12 +91,14 @@ export default function Blog() {
                         <span>{post.readingTime}</span>
                       </div>
                       <h2 className="mt-3 max-w-xl text-[1.35rem] font-semibold tracking-[-0.03em] text-[var(--ink)] sm:text-[1.5rem]">
-                        <Link
-                          href={`/blog/${post.slug}`}
-                          className="transition-colors duration-200 hover:text-[var(--forest-mid)]"
-                        >
-                          {post.title}
-                        </Link>
+                        <span className="scroll-title-content">
+                          <Link
+                            href={`/blog/${post.slug}`}
+                            className="transition-colors duration-200 hover:text-[var(--forest-mid)]"
+                          >
+                            {post.title}
+                          </Link>
+                        </span>
                       </h2>
                       <p className="mt-3 max-w-xl text-[14px] leading-6 text-[var(--ink-soft)]">
                         {post.excerpt}

@@ -17,7 +17,7 @@ export default function About() {
                 About Cuppet
               </p>
               <h1 className="mt-6 max-w-4xl font-display text-[3.6rem] font-normal leading-[0.92] tracking-[-0.04em] text-[var(--ink)] sm:text-[6rem]">
-                Make better use of AI.
+                <span className="scroll-title-content">Make better use of AI.</span>
               </h1>
               <div className="mt-10 grid gap-7 border-t border-[var(--rule)] pt-7 md:grid-cols-[1fr_1.1fr]">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--ink-faint)]">
@@ -37,7 +37,7 @@ export default function About() {
           <div className="mx-auto grid max-w-6xl gap-10 border-t border-[var(--rule)] pt-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
             <div>
               <h2 className="font-display text-[2.6rem] font-normal leading-none tracking-[-0.025em] text-[var(--ink)] sm:text-[3.25rem]">
-                The problem
+                <span className="scroll-title-content">The problem</span>
               </h2>
             </div>
             <p className="max-w-3xl text-[17px] leading-8 text-[var(--ink-soft)] sm:text-[19px] sm:leading-9">
@@ -62,7 +62,7 @@ export default function About() {
           <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
             <div>
               <h2 className="font-display text-[2.6rem] font-normal leading-none tracking-[-0.025em] text-[var(--ink)] sm:text-[3.25rem]">
-                The solution
+                <span className="scroll-title-content">The solution</span>
               </h2>
             </div>
             <div className="max-w-3xl">
@@ -110,7 +110,7 @@ export default function About() {
                 Our measure
               </p>
               <h2 className="mt-5 max-w-lg font-display text-[2.8rem] font-normal leading-[0.97] tracking-[-0.03em] text-[var(--ink)] sm:text-[3.75rem]">
-                More signal. Less software.
+                <span className="scroll-title-content">More signal. Less software.</span>
               </h2>
               <p className="mt-6 max-w-lg text-[15px] leading-7 text-[var(--ink-soft)]">
                 The best result is not more time spent inside Cuppet. It is fewer questions to

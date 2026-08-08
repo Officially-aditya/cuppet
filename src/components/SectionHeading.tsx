@@ -29,7 +29,7 @@ export default function SectionHeading({
           dark ? 'text-[var(--paper)]' : 'text-[var(--ink)]'
         }`}
       >
-        {title}
+        <span className="scroll-title-content">{title}</span>
       </h2>
       {sub && (
         <p

@@ -377,14 +377,6 @@
     transition: none;
   }
 
-  .scroll-title {
-    text-decoration-color: var(--forest-mid);
-    transition: none;
-  }
-
-  .scroll-title[data-scroll-tone='dark'] {
-    text-decoration-color: var(--paper-3);
-  }
 }
 
 .scroll-title {
@@ -397,16 +389,54 @@
   transition: text-decoration-color 650ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.scroll-title-content {
+  --scroll-title-highlight: color-mix(in srgb, var(--leaf) 18%, transparent);
+  background-image: linear-gradient(
+    var(--scroll-title-highlight),
+    var(--scroll-title-highlight)
+  );
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 0.3em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .scroll-title[data-scroll-tone='dark'] {
   text-decoration-color: transparent;
+}
+
+.scroll-title[data-scroll-tone='dark'] .scroll-title-content {
+  --scroll-title-highlight: color-mix(in srgb, var(--paper-3) 24%, transparent);
 }
 
 .scroll-title-visible {
   text-decoration-color: var(--forest-mid);
 }
 
+.scroll-title-visible .scroll-title-content {
+  background-size: 100% 0.3em;
+}
+
 .scroll-title-visible[data-scroll-tone='dark'] {
   text-decoration-color: var(--paper-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-title {
+    text-decoration-color: var(--forest-mid);
+    transition: none;
+  }
+
+  .scroll-title-content {
+    background-size: 100% 0.3em;
+    transition: none;
+  }
+
+  .scroll-title[data-scroll-tone='dark'] {
+    text-decoration-color: var(--paper-3);
+  }
 }
 
 .legal-copy > div:first-child p {

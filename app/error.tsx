@@ -3,7 +3,9 @@
 export default function Error({ error }: { error: Error & { digest?: string }; reset: () => void }) {
   return (
     <div className="min-h-screen bg-[#F5F3EE] px-6 py-20 text-[#171a17]">
-      <h1 className="text-2xl font-semibold">Something went wrong</h1>
+      <h1 className="text-2xl font-semibold">
+        <span className="scroll-title-content">Something went wrong</span>
+      </h1>
       <p className="mt-3 max-w-xl text-sm text-black/60">{error.message}</p>
       <button
         type="button"

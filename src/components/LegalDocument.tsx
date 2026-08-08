@@ -68,7 +68,7 @@ function renderBlock(block: string, index: number) {
     const heading = block.slice(4)
     return (
       <h3 key={`${heading}-${index}`} id={slugify(heading)}>
-        {heading}
+        <span className="scroll-title-content">{heading}</span>
       </h3>
     )
   }
@@ -77,7 +77,7 @@ function renderBlock(block: string, index: number) {
     const heading = block.slice(3)
     return (
       <h2 key={`${heading}-${index}`} id={slugify(heading)}>
-        {heading}
+        <span className="scroll-title-content">{heading}</span>
       </h2>
     )
   }
@@ -164,7 +164,7 @@ export default function LegalDocument({
               Legal
             </p>
             <h1 className="mt-6 max-w-4xl font-display text-[3.4rem] font-normal leading-[0.92] tracking-[-0.04em] text-[var(--ink)] sm:text-[5.5rem]">
-              {title}
+              <span className="scroll-title-content">{title}</span>
             </h1>
             <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 border-t border-[var(--rule)] pt-6 text-[11px] text-[var(--ink-faint)]">
               <p>

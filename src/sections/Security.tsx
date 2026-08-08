@@ -49,7 +49,7 @@ export default function Security() {
                 data-scroll-tone="dark"
                 className="mt-7 text-sm font-semibold text-[rgba(245,243,238,0.9)]"
               >
-                {item.title}
+                <span className="scroll-title-content">{item.title}</span>
               </h3>
               <p className="mt-2 text-xs leading-5 text-[rgba(245,243,238,0.65)]">{item.body}</p>
             </div>

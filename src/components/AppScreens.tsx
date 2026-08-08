@@ -100,7 +100,7 @@ export function ConnectScreen() {
       <div className="flex-1 overflow-y-auto px-4 pb-3 pt-5">
         <Eyebrow>Workspace setup</Eyebrow>
         <h3 className="mt-1 text-[21px] font-semibold leading-tight text-[var(--ink)]">
-          Connect your tools
+          <span className="scroll-title-content">Connect your tools</span>
         </h3>
         <p className="mt-1 text-[11.5px] leading-5 text-[var(--ink-soft)]">
           Choose which services Cuppet can connect to.
@@ -195,7 +195,7 @@ export function ConfirmScreen() {
       <div className="flex-1 overflow-y-auto px-4 pb-3 pt-5">
         <Eyebrow>Final review</Eyebrow>
         <h3 className="mt-1 text-[21px] font-semibold leading-tight text-[var(--ink)]">
-          Confirm your agent
+          <span className="scroll-title-content">Confirm your agent</span>
         </h3>
         <p className="mt-1 text-[11.5px] leading-5 text-[var(--ink-soft)]">
           Review what it will do, when it will run, and which services it needs.

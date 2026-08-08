@@ -21,7 +21,7 @@ export default function CTA() {
           data-scroll-tone="dark"
           className="mx-auto mt-5 max-w-2xl font-display text-[clamp(2.25rem,11vw,4rem)] font-normal leading-[0.98] tracking-[-0.03em] text-[var(--paper)]"
         >
-          Your next status update should arrive on its own.
+          <span className="scroll-title-content">Your next status update should arrive on its own.</span>
         </h2>
         <p className="mx-auto mt-6 max-w-md text-sm leading-6 text-[rgba(245,243,238,0.65)]">
           Join the early group shaping Cuppet for iOS and Android. We’ll only write when there is

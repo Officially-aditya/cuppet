@@ -357,7 +357,7 @@ export default function Connectors() {
                     id="connector-detail-title"
                     className="mt-1 font-display text-[2rem] font-normal leading-none tracking-[-0.03em] text-[var(--ink)]"
                   >
-                    {activeConnector.name}
+                    <span className="scroll-title-content">{activeConnector.name}</span>
                   </h3>
                 </div>
               </div>
@@ -450,7 +450,7 @@ export default function Connectors() {
                   id="connector-browse-title"
                   className="mt-2 font-display text-[2rem] font-normal leading-none tracking-[-0.03em] text-[var(--ink)]"
                 >
-                  Browse integrations
+                  <span className="scroll-title-content">Browse integrations</span>
                 </h3>
               </div>
               <button

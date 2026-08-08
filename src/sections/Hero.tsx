@@ -8,8 +8,8 @@ export default function Hero() {
       <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-16">
         <div className="min-w-0 text-center lg:text-left">
           <h1 className="font-display text-[3.55rem] font-normal leading-[0.91] tracking-[-0.035em] text-[var(--ink)] sm:text-[5rem] lg:text-[5.25rem]">
-            Work gets done.
-            <span className="mt-1 block font-display-italic text-[var(--forest-mid)]">
+            <span className="scroll-title-content">Work gets done.</span>
+            <span className="scroll-title-content mt-1 block font-display-italic text-[var(--forest-mid)]">
               You get a message.
             </span>
           </h1>

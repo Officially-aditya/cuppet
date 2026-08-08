@@ -37,7 +37,7 @@ export default function BlogPost({ slug }: { slug: string }) {
               </div>
 
               <h1 className="mt-6 max-w-3xl font-display text-[2.9rem] font-normal leading-[0.95] tracking-[-0.035em] text-[var(--ink)] sm:text-[4.25rem]">
-                {post.title}
+                <span className="scroll-title-content">{post.title}</span>
               </h1>
               <p className="mt-7 max-w-2xl text-[17px] leading-8 text-[var(--ink-soft)] sm:text-[19px]">
                 {post.dek}
@@ -63,7 +63,7 @@ export default function BlogPost({ slug }: { slug: string }) {
             {post.sections.map((section, index) => (
               <section key={section.heading} className={index === 0 ? '' : 'mt-14'}>
                 <h2 className="font-display text-[2rem] font-normal leading-[1.05] tracking-[-0.025em] text-[var(--ink)] sm:text-[2.4rem]">
-                  {section.heading}
+                  <span className="scroll-title-content">{section.heading}</span>
                 </h2>
                 <div className="mt-6 space-y-5">
                   {section.paragraphs.map((paragraph) => (
@@ -88,12 +88,14 @@ export default function BlogPost({ slug }: { slug: string }) {
                 Read next
               </p>
               <h3 className="mt-4 max-w-xl font-display text-[2.4rem] font-normal leading-[0.98] tracking-[-0.03em] text-[var(--ink)] sm:text-[3.1rem]">
-                <Link
-                  href={`/blog/${nextPost.slug}`}
-                  className="transition-colors duration-200 hover:text-[var(--forest-mid)]"
-                >
-                  {nextPost.title}
-                </Link>
+                <span className="scroll-title-content">
+                  <Link
+                    href={`/blog/${nextPost.slug}`}
+                    className="transition-colors duration-200 hover:text-[var(--forest-mid)]"
+                  >
+                    {nextPost.title}
+                  </Link>
+                </span>
               </h3>
               <p className="mt-4 max-w-lg text-sm leading-6 text-[var(--ink-soft)]">
                 {nextPost.excerpt}
